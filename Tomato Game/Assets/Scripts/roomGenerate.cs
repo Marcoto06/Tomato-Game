@@ -11,7 +11,7 @@ public class roomGenerate : MonoBehaviour
     void Start()
     {
         rand = Random.Range(0, L1Rooms.Length);
-        if (manager.GetComponent<roomManager>().num_rooms < 4)
+        if (manager.GetComponent<roomManager>().num_rooms < 5)
         {
             Instantiate(L1Rooms[rand], transform.position, L1Rooms[rand].transform.rotation);
             manager.GetComponent<roomManager>().num_rooms++;
