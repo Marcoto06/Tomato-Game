@@ -383,6 +383,14 @@ PrefabInstance:
       propertyPath: L1Rooms.Array.data[2]
       value: 
       objectReference: {fileID: 3386634467186265017, guid: 920424df8f02b504ea902ac874131074, type: 3}
+    - target: {fileID: 2075856908904826286, guid: c9cb09e1ffc37ad4a979ee8ce6045baf, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: 23667f09013e594468f3c398b61710d8, type: 3}
+    - target: {fileID: 2075856908904826286, guid: c9cb09e1ffc37ad4a979ee8ce6045baf, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4210108750260698688, guid: c9cb09e1ffc37ad4a979ee8ce6045baf, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.576271
