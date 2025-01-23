@@ -15,7 +15,7 @@ public class roomGenerate : MonoBehaviour
         {
             Instantiate(L1Rooms[rand], transform.position, L1Rooms[rand].transform.rotation);
             manager.GetComponent<roomManager>().num_rooms++;
-        }
+        } else { manager.GetComponent<roomManager>().num_rooms = 1; }
     }
 
     // Update is called once per frame
