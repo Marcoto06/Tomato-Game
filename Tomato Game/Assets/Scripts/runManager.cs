@@ -28,11 +28,13 @@ public class runManager : MonoBehaviour
             {
                 paused = false;
                 pauseMenu.SetActive(false);
+                Time.timeScale = 1;
             }
             else
             {
                 paused = true;
                 pauseMenu.SetActive(true);
+                Time.timeScale = 0;
             }
         }
     }
@@ -40,6 +42,7 @@ public class runManager : MonoBehaviour
     public void Resume()
     {
         pauseMenu.SetActive(false);
+        Time.timeScale = 1;
     }
 
     public void ToMenu()
