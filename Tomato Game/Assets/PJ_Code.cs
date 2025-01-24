@@ -35,11 +35,12 @@ public class movment : MonoBehaviour
     public Animator anim;
     public SpriteRenderer PlayerSR;
 
+
     void Start()
     {
         vecGravity = new Vector2 (0, -Physics2D.gravity.y);
         rb = GetComponent<Rigidbody2D>();
-
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -50,6 +51,15 @@ public class movment : MonoBehaviour
         }
 
         horizontal = Input.GetAxisRaw("Horizontal");
+
+        if (horizontal > .1f || horizontal < -.1f )
+        {
+            anim.SetBool("isWalking", true);
+        }
+        else
+        {
+            anim.SetBool("isWalking", false);
+        }
 
         Flip();
 
