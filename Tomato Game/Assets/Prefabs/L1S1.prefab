@@ -44,10 +44,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 230866f6d2307784e98f65a9910bfdc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 582103721386596868, guid: 97520e7922ff70e429835a08109edb3e, type: 3}
-  L1Rooms:
+  manager: {fileID: 4220718333158126399, guid: f00e5e119f7689947a7de8bb710e3727, type: 3}
+  Rooms:
   - {fileID: 5748142927834897940}
   - {fileID: 3386634467186265017, guid: 920424df8f02b504ea902ac874131074, type: 3}
+  - {fileID: 3386634467186265017, guid: 3de72ccfe5da38b41a57ec6379c8d7a9, type: 3}
+  finalRoom: {fileID: 3386634467186265017, guid: 71bde5111cf53264dbad2b7d31bee87f, type: 3}
+  safeRoom: {fileID: 3386634467186265017, guid: 3de72ccfe5da38b41a57ec6379c8d7a9, type: 3}
+  upRoom: {fileID: 3386634467186265017, guid: 920424df8f02b504ea902ac874131074, type: 3}
+  floor: 0
 --- !u!1 &5748142927834897940
 GameObject:
   m_ObjectHideFlags: 0
