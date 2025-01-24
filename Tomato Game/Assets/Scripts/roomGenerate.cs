@@ -15,7 +15,7 @@ public class roomGenerate : MonoBehaviour
     void Start()
     {
         rand = Random.Range(0, Rooms.Length);
-        if (manager.GetComponent<roomManager>().num_rooms < 10)
+        if (manager.GetComponent<roomManager>().num_rooms < 8)
         {   
             if (Rooms[rand].tag == "upRoom")
             {
