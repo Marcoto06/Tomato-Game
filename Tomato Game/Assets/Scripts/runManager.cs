@@ -42,7 +42,7 @@ public class runManager : MonoBehaviour
     public void Resume()
     {
         pauseMenu.SetActive(false);
-        Time.timeScale = 1;
+        Time.timeScale = 1  ;
     }
 
     public void ToMenu()
