@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1697264568134654418}
   - component: {fileID: 781835877116925943}
   m_Layer: 0
-  m_Name: L1UpRoom
+  m_Name: L3UpRoom
   m_TagString: upRoom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -111,7 +111,7 @@ Transform:
   m_GameObject: {fileID: 8712651347026351035}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.999, y: 0, z: 0}
+  m_LocalPosition: {x: 1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -129,11 +129,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 230866f6d2307784e98f65a9910bfdc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 4220718333158126399, guid: f00e5e119f7689947a7de8bb710e3727, type: 3}
+  manager: {fileID: 4220718333158126399, guid: 641a6ced680fc4a4787da222ab3636ea, type: 3}
   Rooms:
-  - {fileID: 5748142927834897940, guid: 2c63d863c22f29f4191b380b83a6c9a3, type: 3}
-  - {fileID: 3386634467186265017, guid: 3de72ccfe5da38b41a57ec6379c8d7a9, type: 3}
-  finalRoom: {fileID: 3386634467186265017, guid: 71bde5111cf53264dbad2b7d31bee87f, type: 3}
-  safeRoom: {fileID: 3386634467186265017, guid: 3de72ccfe5da38b41a57ec6379c8d7a9, type: 3}
+  - {fileID: 5748142927834897940, guid: f9f3c5e8ce78b994d924fa0b42d90eb4, type: 3}
+  finalRoom: {fileID: 3386634467186265017, guid: dc204f8b229cd71419231532101f15c7, type: 3}
+  safeRoom: {fileID: 3386634467186265017, guid: a18a953cf6bdc0c43bb81222dff09247, type: 3}
   upRoom: {fileID: 3386634467186265017}
   floor: 0
