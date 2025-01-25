@@ -9,7 +9,7 @@ public class playerClassTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        string path = Application.persistentDataPath + "/saveData.son";
+        string path = Application.persistentDataPath + "/saveData.json";
         if (File.Exists(path))
         {
             string json = System.IO.File.ReadAllText(path);

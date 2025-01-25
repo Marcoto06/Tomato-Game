@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 230866f6d2307784e98f65a9910bfdc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 4220718333158126399, guid: 641a6ced680fc4a4787da222ab3636ea, type: 3}
+  manager: {fileID: 4220718333158126399, guid: f00e5e119f7689947a7de8bb710e3727, type: 3}
   Rooms:
   - {fileID: 5748142927834897940}
   - {fileID: 3386634467186265017, guid: e8f53cfc68a87b74b84333da72d423c4, type: 3}

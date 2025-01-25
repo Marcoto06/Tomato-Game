@@ -354,7 +354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paused: 0
   pauseMenu: {fileID: 1445383522}
-  manager: {fileID: 2141519764}
+  manager: {fileID: 1456971183}
   ranged_lvl: 0
   melee_lvl: 0
   mage_lvl: 0
@@ -861,9 +861,13 @@ PrefabInstance:
       value: RoomManager
       objectReference: {fileID: 0}
     - target: {fileID: 7043257115552148868, guid: f00e5e119f7689947a7de8bb710e3727, type: 3}
+      propertyPath: floor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7043257115552148868, guid: f00e5e119f7689947a7de8bb710e3727, type: 3}
       propertyPath: initialRoom
       value: 
-      objectReference: {fileID: 5790544832810451880, guid: c9cb09e1ffc37ad4a979ee8ce6045baf, type: 3}
+      objectReference: {fileID: 5790544832810451880, guid: 2ff2582c2759b6e4298b0cef6dd7ab20, type: 3}
     - target: {fileID: 8678639263514399024, guid: f00e5e119f7689947a7de8bb710e3727, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -909,6 +913,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f00e5e119f7689947a7de8bb710e3727, type: 3}
+--- !u!1 &1456971183 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4220718333158126399, guid: f00e5e119f7689947a7de8bb710e3727, type: 3}
+  m_PrefabInstance: {fileID: 1456971182}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1489980792
 GameObject:
   m_ObjectHideFlags: 0
@@ -1655,11 +1664,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2009328642}
   m_CullTransparentMesh: 1
---- !u!1 &2141519764 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4220718333158126399, guid: f00e5e119f7689947a7de8bb710e3727, type: 3}
-  m_PrefabInstance: {fileID: 1456971182}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -129,10 +129,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 230866f6d2307784e98f65a9910bfdc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 4220718333158126399, guid: 1a127fb17c2525c4e9dd8338d9347b60, type: 3}
+  manager: {fileID: 4220718333158126399, guid: f00e5e119f7689947a7de8bb710e3727, type: 3}
   Rooms:
   - {fileID: 5748142927834897940, guid: 6a65fcb961d6830448ec4a0319255a37, type: 3}
   finalRoom: {fileID: 3386634467186265017, guid: 626c59058b1137048b7102d16380a04b, type: 3}
   safeRoom: {fileID: 3386634467186265017, guid: 57ec9cb942665074baf4c365f43829da, type: 3}
   upRoom: {fileID: 3386634467186265017}
-  floor: 1
+  floor: 0

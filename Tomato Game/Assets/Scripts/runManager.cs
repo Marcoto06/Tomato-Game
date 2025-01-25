@@ -9,6 +9,7 @@ public class runManager : MonoBehaviour
 {
     public bool paused = false;
     public GameObject pauseMenu;
+    public GameObject manager;
     public int ranged_lvl;
     public int melee_lvl;
     public int mage_lvl;
@@ -55,5 +56,19 @@ public class runManager : MonoBehaviour
         string path = Application.persistentDataPath + "/saveData.son";
         System.IO.File.WriteAllText(path, json);
         SceneManager.LoadScene("Menu");
+    }
+    public void nextFloor()
+    {
+        if (manager.GetComponent<roomManager>().floor == 0) {
+            SceneManager.LoadScene("Nv2");
+        }
+        else if (manager.GetComponent<roomManager>().floor == 1)
+        {
+            SceneManager.LoadScene("Nv3");
+        }
+        else
+        {
+            SceneManager.LoadScene("Marc");
+        }
     }
 }
