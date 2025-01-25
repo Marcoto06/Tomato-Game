@@ -731,7 +731,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   jumpTime: 0.4
-  jumpForce: 10
+  jumpForce: 7
   fallMultiplaier: 3
   jumpMultiplaier: 2
   tr: {fileID: 0}
