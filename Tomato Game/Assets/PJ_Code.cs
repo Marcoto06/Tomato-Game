@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -105,6 +106,7 @@ public class movment : MonoBehaviour
         }
 
         rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
+        anim.SetFloat("xVelocity", Math.Abs(rb.velocity.x));
     }
 
     private void Flip()
