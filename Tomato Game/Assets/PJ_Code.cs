@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,11 +36,12 @@ public class movment : MonoBehaviour
     public Animator anim;
     public SpriteRenderer PlayerSR;
 
+
     void Start()
     {
         vecGravity = new Vector2 (0, -Physics2D.gravity.y);
         rb = GetComponent<Rigidbody2D>();
-
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -50,6 +52,15 @@ public class movment : MonoBehaviour
         }
 
         horizontal = Input.GetAxisRaw("Horizontal");
+
+        if (horizontal > .1f || horizontal < -.1f )
+        {
+            anim.SetBool("isWalking", true);
+        }
+        else
+        {
+            anim.SetBool("isWalking", false);
+        }
 
         Flip();
 
@@ -95,6 +106,7 @@ public class movment : MonoBehaviour
         }
 
         rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
+        anim.SetFloat("xVelocity", Math.Abs(rb.velocity.x));
     }
 
     private void Flip()
