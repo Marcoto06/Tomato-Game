@@ -9,7 +9,6 @@ public class roomGenerate : MonoBehaviour
     public GameObject finalRoom;
     public GameObject safeRoom;
     public GameObject upRoom;
-    public int floor;
     private int rand;
     // Start is called before the first frame update
     void Start()

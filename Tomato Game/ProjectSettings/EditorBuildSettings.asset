@@ -14,4 +14,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Marc.unity
     guid: 172942fb88649a24eae6dd47df1479d8
+  - enabled: 1
+    path: Assets/Scenes/Nv2.unity
+    guid: 63ccd19b1d8e6874ba49ab7853dfefb2
+  - enabled: 1
+    path: Assets/Scenes/Nv3.unity
+    guid: 5ee5bb8ac0c03514cb0e3cb6a3872626
+  - enabled: 1
+    path: Assets/Scenes/Marcel.unity
+    guid: 845f2d7f6473dac4c96463e13f636f7a
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 01af54cc1cbd2ee468febef2b6566046
   m_configObjects: {}

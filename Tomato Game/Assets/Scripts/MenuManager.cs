@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Scene : MonoBehaviour
@@ -10,6 +11,8 @@ public class Scene : MonoBehaviour
     public GameObject menu1;
     public GameObject menu2;
     public GameObject startButton;
+    public GameObject selectButton;
+    public GameObject playButton;
     public string player_class;
     // Start is called before the first frame update
     void Start()
@@ -19,10 +22,21 @@ public class Scene : MonoBehaviour
         startButton.GetComponent<Button>().interactable = false;
     }
 
+    private void Update()
+    {
+        if (menu2.activeSelf == true && Input.GetButtonDown("Cancel"))
+        {
+            menu2.SetActive(false);
+            menu1.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(playButton);
+        }
+    }
+
     public void Play()
     {
         menu2.SetActive(true);
         menu1.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(selectButton);
     }
 
     public void Quit()
@@ -39,9 +53,10 @@ public class Scene : MonoBehaviour
     {
         saveData data = new saveData();
         data.player_class = selectClass;
+        data.floor = 0;
         startButton.GetComponent<Button>().interactable = true;
         string json = JsonUtility.ToJson(data);
-        string path = Application.persistentDataPath + "/saveData.son";
+        string path = Application.persistentDataPath + "/saveData.json";
         System.IO.File.WriteAllText(path, json);
     }
 }

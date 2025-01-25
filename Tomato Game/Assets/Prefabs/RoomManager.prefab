@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8678639263514399024}
   - component: {fileID: 7043257115552148868}
   m_Layer: 0
-  m_Name: RoomManager1
+  m_Name: RoomManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,3 +47,8 @@ MonoBehaviour:
   num_rooms: 1
   created_safeRoom: 0
   created_upRoom: 0
+  initialRooms:
+  - {fileID: 5790544832810451880, guid: c9cb09e1ffc37ad4a979ee8ce6045baf, type: 3}
+  - {fileID: 5790544832810451880, guid: 2ff2582c2759b6e4298b0cef6dd7ab20, type: 3}
+  - {fileID: 5790544832810451880, guid: 329b7b93e701db8478e5021d20498fe5, type: 3}
+  floor: 0
