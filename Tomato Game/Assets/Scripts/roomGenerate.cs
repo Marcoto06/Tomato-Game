@@ -9,13 +9,12 @@ public class roomGenerate : MonoBehaviour
     public GameObject finalRoom;
     public GameObject safeRoom;
     public GameObject upRoom;
-    public int floor;
     private int rand;
     // Start is called before the first frame update
     void Start()
     {
         rand = Random.Range(0, Rooms.Length);
-        if (manager.GetComponent<roomManager>().num_rooms < 10)
+        if (manager.GetComponent<roomManager>().num_rooms < 8)
         {   
             if (Rooms[rand].tag == "upRoom")
             {

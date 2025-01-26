@@ -9,4 +9,5 @@ public class saveData
     public int ranged_lvl;
     public int melee_lvl;
     public int mage_lvl;
+    public int floor;
 }
