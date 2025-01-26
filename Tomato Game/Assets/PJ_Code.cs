@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class movment : MonoBehaviour
@@ -11,7 +12,7 @@ public class movment : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private float fallMultiplaier;
     [SerializeField] private float jumpMultiplaier;
-    [SerializeField] private TrailRenderer tr;
+    //[SerializeField] private TrailRenderer tr;
 
     private Rigidbody2D rb;
 
@@ -69,6 +70,12 @@ public class movment : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             isJumping = true;
             jumpCounter = 0;
+            anim.SetBool("isJumping", isJumping);
+        }
+
+        if (Input.GetButton("Jump") && isGrounded() && rb.velocity.y ==0)
+        {
+            anim.SetBool("isJumping", false);
         }
 
         if (rb.velocity.y > 0 && isJumping)
@@ -81,6 +88,8 @@ public class movment : MonoBehaviour
         if (Input.GetButtonUp("Jump"))
         {
             isJumping = false;
+            anim.SetBool("isJumping", false);
+                        
         }
         if (Input.GetButtonDown("Jump"))
         {
@@ -107,6 +116,7 @@ public class movment : MonoBehaviour
 
         rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
         anim.SetFloat("xVelocity", Math.Abs(rb.velocity.x));
+        anim.SetFloat("yVelocity", rb.velocity.y);
     }
 
     private void Flip()
@@ -132,9 +142,9 @@ public class movment : MonoBehaviour
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
         rb.velocity = new Vector2(transform.localScale.x * dashForce, 0f);
-        tr.emitting = true;
+        //tr.emitting = true;
         yield return new WaitForSeconds(dashingTime);
-        tr.emitting = false;
+        //tr.emitting = false;
         rb.gravityScale = originalGravity;
         isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);
