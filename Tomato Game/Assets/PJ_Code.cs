@@ -128,6 +128,5 @@ public class movment : MonoBehaviour
         isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
-
     }
 }
