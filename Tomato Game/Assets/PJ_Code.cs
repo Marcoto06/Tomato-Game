@@ -12,7 +12,7 @@ public class movment : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private float fallMultiplaier;
     [SerializeField] private float jumpMultiplaier;
-    //[SerializeField] private TrailRenderer tr;
+    [SerializeField] private TrailRenderer tr;
 
     private Rigidbody2D rb;
 
@@ -24,8 +24,8 @@ public class movment : MonoBehaviour
 
     private bool isFacingRight = true;
 
-    private bool isJumping;
-    private float jumpCounter;
+    //private bool isJumping;
+    private bool isGrounded;
 
     private float horizontal;
     private bool canDash = true;
@@ -49,6 +49,7 @@ public class movment : MonoBehaviour
     {
         if (isDashing)
         {
+            anim.SetBool("isDashing", canDash);
             return;
         }
 
@@ -65,35 +66,11 @@ public class movment : MonoBehaviour
 
         Flip();
 
-        if (Input.GetButtonDown("Jump") && isGrounded())
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            isJumping = true;
-            jumpCounter = 0;
-            anim.SetBool("isJumping", isJumping);
-        }
-
-        if (Input.GetButton("Jump") && isGrounded() && rb.velocity.y ==0)
-        {
-            anim.SetBool("isJumping", false);
-        }
-
-        if (rb.velocity.y > 0 && isJumping)
-        {
-            jumpCounter = Time.deltaTime;
-            if (jumpCounter > jumpTime) isJumping = false;
-            rb.velocity += vecGravity * jumpMultiplaier * Time.deltaTime;
-        }
-
-        if (Input.GetButtonUp("Jump"))
-        {
-            isJumping = false;
-            anim.SetBool("isJumping", false);
-                        
-        }
-        if (Input.GetButtonDown("Jump"))
-        {
-            isJumping = false;
+            isGrounded = false;
+            anim.SetBool("isJumping", !isGrounded);
         }
 
         if (rb.velocity.y <0)
@@ -103,6 +80,7 @@ public class movment : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
+            anim.SetBool("isDashing", canDash);
             StartCoroutine(Dash());
         }
     }
@@ -130,9 +108,10 @@ public class movment : MonoBehaviour
         }
     }
 
-    bool isGrounded()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        return Physics2D.OverlapCapsule(groundCheck.position, new Vector2(1.09f, 0.2f), CapsuleDirection2D.Horizontal, 0, whatIsGround);
+        isGrounded = true;
+        anim.SetBool("isJumping", !isGrounded);
     }
 
     private IEnumerator Dash()
@@ -142,9 +121,9 @@ public class movment : MonoBehaviour
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
         rb.velocity = new Vector2(transform.localScale.x * dashForce, 0f);
-        //tr.emitting = true;
+        tr.emitting = true;
         yield return new WaitForSeconds(dashingTime);
-        //tr.emitting = false;
+        tr.emitting = false;
         rb.gravityScale = originalGravity;
         isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);
