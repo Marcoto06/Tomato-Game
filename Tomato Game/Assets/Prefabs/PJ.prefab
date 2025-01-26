@@ -171,6 +171,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
+  runManager: {fileID: 0}
   dashForce: 100
   dashingTime: 0.3
   dashingCooldown: 2

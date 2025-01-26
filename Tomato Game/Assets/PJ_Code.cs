@@ -8,11 +8,11 @@ public class movment : MonoBehaviour
 {
     public float moveSpeed;
     [Header("Jump System")]
-    [SerializeField] private float jumpTime;
-    [SerializeField] private float jumpForce;
-    [SerializeField] private float fallMultiplaier;
-    [SerializeField] private float jumpMultiplaier;
-    [SerializeField] private TrailRenderer tr;
+    [SerializeField] public float jumpTime;
+    [SerializeField] public float jumpForce;
+    [SerializeField] public float fallMultiplaier;
+    [SerializeField] public float jumpMultiplaier;
+    [SerializeField] public TrailRenderer tr;
 
     private Rigidbody2D rb;
 
@@ -78,7 +78,7 @@ public class movment : MonoBehaviour
             rb.velocity -= vecGravity * fallMultiplaier * Time.deltaTime;
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+        if (Input.GetButtonDown("R1") && canDash)
         {
             anim.SetBool("isDashing", canDash);
             StartCoroutine(Dash());
