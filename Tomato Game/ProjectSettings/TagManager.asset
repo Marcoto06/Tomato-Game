@@ -6,6 +6,7 @@ TagManager:
   tags:
   - upRoom
   - safeRoom
+  - finalRoom
   layers:
   - Default
   - TransparentFX
