@@ -16,18 +16,13 @@ public class cameraManager : MonoBehaviour
     void Update()
     {
         followTransform = followObject.GetComponent<Transform>();
-        if (followTransform.position.x < 0 && followTransform.position.y < 0)
+        if (followTransform.position.x < 0)
         {
             gameObject.transform.position = new Vector3(0, 0, -10);
         }
-        else if (followTransform.position.x < 0)
-        {
-            gameObject.transform.position = new Vector3(0, followTransform.position.y, -10);
-        }
-        else if (followTransform.position.y < 0)
+        else
         {
             gameObject.transform.position = new Vector3(followTransform.position.x, 0, -10);
         }
-        else { gameObject.transform.position = new Vector3(followTransform.position.x, followTransform.position.y, -10); }
     }
 }
