@@ -9,7 +9,7 @@ using static UnityEditor.Searcher.SearcherWindow.Alignment;
 public class enemyScript : MonoBehaviour
 {
     public string EN_type;
-    public int HP;
+    public int EN_HP;
     public float moveSpeed;
     public bool attacking;
     public bool player_in_range;
@@ -32,15 +32,15 @@ public class enemyScript : MonoBehaviour
         timer = 0;
         if (EN_type == "figa")
         {
-            HP = 1; moveSpeed = 1;
+            EN_HP = 1; moveSpeed = 1;
         }
         else if (EN_type == "pinya")
         {
-            HP = 5;
+            EN_HP = 5;
         }
         else if (EN_type == "llimona")
         {
-            HP = 3;
+            EN_HP = 3;
         }
     }
 

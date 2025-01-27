@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1488154506829941037}
   m_Layer: 0
   m_Name: figaHitBox
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 6150276008930289628}
   m_Layer: 0
   m_Name: bow
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 6546462876030207680}
   m_Layer: 0
   m_Name: EnemyTemplate
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -270,6 +270,7 @@ MonoBehaviour:
   attacking: 0
   player_in_range: 0
   timer: 0
+  rotateValue: 0
   player: {fileID: 0}
   playerTransform: {fileID: 0}
   mySprite: {fileID: 4297139976974109178}
@@ -323,7 +324,7 @@ GameObject:
   - component: {fileID: 4529891167338119030}
   m_Layer: 0
   m_Name: llimonaHitBox
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -401,7 +402,7 @@ GameObject:
   - component: {fileID: 9031206958805017027}
   m_Layer: 0
   m_Name: figaVision
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -490,7 +491,7 @@ GameObject:
   - component: {fileID: 952438904744327554}
   m_Layer: 0
   m_Name: pinyaHitBox
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

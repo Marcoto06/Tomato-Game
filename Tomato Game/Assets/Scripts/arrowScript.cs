@@ -34,4 +34,15 @@ public class arrowScript : MonoBehaviour
             transform.parent = null;
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("enemy"))
+        {
+            return;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 }
