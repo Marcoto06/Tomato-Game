@@ -9,21 +9,39 @@ using static UnityEditor.Searcher.SearcherWindow.Alignment;
 public class enemyScript : MonoBehaviour
 {
     public string EN_type;
-    public int HP;
+    public int EN_HP;
     public float moveSpeed;
     public bool attacking;
+    public bool player_in_range;
+    public float timer;
+    public int rotateValue;
     public GameObject player;
     public Transform playerTransform;
     public SpriteRenderer mySprite;
     public Sprite[] enemySprites;
     public GameObject[] myHitbox;
     public Rigidbody2D myRb;
-    public bool player_in_range;
+    public GameObject arrow;
+    public Transform bow;
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         playerTransform = player.GetComponent<Transform>();
         player_in_range = false;
+        timer = 0;
+        if (EN_type == "figa")
+        {
+            EN_HP = 1; moveSpeed = 1;
+        }
+        else if (EN_type == "pinya")
+        {
+            EN_HP = 5;
+        }
+        else if (EN_type == "llimona")
+        {
+            EN_HP = 3;
+        }
     }
 
     // Update is called once per frame
@@ -37,8 +55,30 @@ public class enemyScript : MonoBehaviour
             myHitbox[0].SetActive(true);
             myHitbox[1].SetActive(false);
             myHitbox[2].SetActive(false);
-            gameObject.transform.localScale = playerTransform.localScale;
+            if (playerTransform.position.x < gameObject.transform.position.x && playerTransform.localScale.x > 0)
+            {
+                rotateValue = -1;
+            } else if (playerTransform.position.x < gameObject.transform.position.x && playerTransform.localScale.x < 0)
+            {
+                rotateValue = 1;
+            }
+            else if (playerTransform.position.x > gameObject.transform.position.x && playerTransform.localScale.x < 0)
+            {
+                rotateValue = -1;
+            } else { rotateValue = 1; }
+            gameObject.transform.localScale = new Vector3(playerTransform.localScale.x * rotateValue, playerTransform.localScale.y, playerTransform.localScale.z);
+
             //Actuar nomes en proximitat del player
+            if (player_in_range)
+            {
+                timer += Time.deltaTime;
+
+                if (timer > 3)
+                {
+                    timer = 0;
+                    shoot();
+                }
+            }
         }
         else if (EN_type == "pinya")
         {
@@ -59,20 +99,8 @@ public class enemyScript : MonoBehaviour
             gameObject.transform.localScale = playerTransform.localScale;
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    void shoot()
     {
-        if (collision.CompareTag("Player"))
-        {
-            player_in_range = true;
-        }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            player_in_range = false;
-            Debug.Log("?");
-        }
+        Instantiate(arrow, bow.position, Quaternion.identity, this.gameObject.transform);
     }
 }
