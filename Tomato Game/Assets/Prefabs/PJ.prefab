@@ -295,6 +295,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   PlayerSR: {fileID: 0}
   attackPoint: {fileID: 1423835173305282254}
+  brancaGTomato: {fileID: 909588545389712059}
   radius: 0.69
   enemies:
     serializedVersion: 2
