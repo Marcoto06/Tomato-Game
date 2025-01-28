@@ -42,6 +42,7 @@ public class enemyScript : MonoBehaviour
         if (EN_type == "figa")
         {
             moveSpeed = 3f;
+             moveSpeed = 3f;
             mySprite.sprite = enemySprites[0];
         }
         else if (EN_type == "pinya")

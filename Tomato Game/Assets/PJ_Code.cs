@@ -161,7 +161,7 @@ public class movment : MonoBehaviour
         foreach (Collider2D enemyGameobject in enemy)
         {
             Debug.Log("Hit enemy");
-            enemyGameobject.GetComponent<enemyScript>().EN_HP -= PJ_DAM;
+            enemyGameobject.GetComponentInParent<enemyScript>().EN_HP -= PJ_DAM;
         }
     }
 
