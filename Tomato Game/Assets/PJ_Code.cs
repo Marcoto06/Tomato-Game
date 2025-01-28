@@ -39,6 +39,7 @@ public class movment : MonoBehaviour
     public SpriteRenderer PlayerSR;
 
     public GameObject attackPoint;
+    public GameObject brancaGTomato;
     public float radius;
     public LayerMask enemies;
     public float PJ_DAM;
@@ -92,6 +93,7 @@ public class movment : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             isAttacking = true;
+            brancaGTomato.SetActive(true);
             anim.SetBool("isAttacking", isAttacking);
         }
         if (Input.GetMouseButtonUp(0))
@@ -151,7 +153,9 @@ public class movment : MonoBehaviour
     private IEnumerator AttAn()
     {
         yield return new WaitForSeconds(0.16f);
+        brancaGTomato.SetActive(false);
         anim.SetBool("isAttacking", false);
+
     }
 
     public void Attack()
