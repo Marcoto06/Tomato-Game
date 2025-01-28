@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.XR;
 using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class enemyScript : MonoBehaviour
@@ -17,6 +18,8 @@ public class enemyScript : MonoBehaviour
     public float timer;
     public int rotateValue;
     public bool RUN;
+    public int patrolFlip;
+    public float chargeForce;
     public GameObject player;
     public Transform playerTransform;
     public SpriteRenderer mySprite;
@@ -25,7 +28,10 @@ public class enemyScript : MonoBehaviour
     public Rigidbody2D myRb;
     public GameObject arrow;
     public Transform bow;
-    public Transform[] pinyaPatrolPoints;
+    public Transform[] pinyaPatrolPointsSpawners;
+    public Transform[] llimonaPatrolPointsSpawners;
+    public GameObject limitPatrol;
+    public GameObject[] PatrolPoints;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,17 +41,19 @@ public class enemyScript : MonoBehaviour
         timer = 0;
         if (EN_type == "figa")
         {
-            EN_HP = 100; moveSpeed = 3f;
+            moveSpeed = 3f;
             mySprite.sprite = enemySprites[0];
         }
         else if (EN_type == "pinya")
         {
-            EN_HP = 350;
+            moveSpeed = 2f;
+            rotateValue = 1;
+            gameObject.transform.localScale = new Vector3(0.09f * rotateValue, 0.09f, 0);
+            pinyaPatrolCreate();
             mySprite.sprite = enemySprites[1];
         }
         else if (EN_type == "llimona")
         {
-            EN_HP = 250;
             mySprite.sprite = enemySprites[2];
         }
     }
@@ -99,19 +107,19 @@ public class enemyScript : MonoBehaviour
             {
                 if (playerTransform.position.x < gameObject.transform.position.x && playerTransform.localScale.x > 0)
                 {
-                    myRb.velocity = new Vector2(moveSpeed * -rotateValue, 0);
+                    myRb.velocity = new Vector2(moveSpeed * -rotateValue, myRb.velocity.y);
                 }
                 else if (playerTransform.position.x < gameObject.transform.position.x && playerTransform.localScale.x < 0)
                 {
-                    myRb.velocity = new Vector2(moveSpeed * rotateValue, 0);
+                    myRb.velocity = new Vector2(moveSpeed * rotateValue, myRb.velocity.y);
                 }
                 else if (playerTransform.position.x > gameObject.transform.position.x && playerTransform.localScale.x < 0)
                 {
-                    myRb.velocity = new Vector2(moveSpeed * rotateValue, 0);
+                    myRb.velocity = new Vector2(moveSpeed * rotateValue, myRb.velocity.y);
                 }
                 else
                 {
-                    myRb.velocity = new Vector2(moveSpeed * -rotateValue, 0);
+                    myRb.velocity = new Vector2(moveSpeed * -rotateValue, myRb.velocity.y);
                 }
             }
         }
@@ -119,39 +127,51 @@ public class enemyScript : MonoBehaviour
         {
             //Adaptar el prefab a l'enemic seleccionat
             myHitbox[0].SetActive(false);
-            myHitbox[1].SetActive(false);
-            myHitbox[2].SetActive(true);
-            if (playerTransform.position.x < gameObject.transform.position.x && playerTransform.localScale.x > 0)
-            {
-                rotateValue = -1;
-            }
-            else if (playerTransform.position.x < gameObject.transform.position.x && playerTransform.localScale.x < 0)
-            {
-                rotateValue = -1;
-            }
-            else if (playerTransform.position.x > gameObject.transform.position.x && playerTransform.localScale.x < 0)
-            {
-                rotateValue = 1;
-            }
-            else
-            {
-                rotateValue = 1;
-            }
+            myHitbox[1].SetActive(true);
+            myHitbox[2].SetActive(false);
             gameObject.transform.localScale = new Vector3(0.09f * rotateValue, 0.09f, 0);
 
             //Atacar en proximitat del player
+            if (!player_in_range)
+            {
+                myRb.velocity = new Vector2(moveSpeed * rotateValue, myRb.velocity.y);
+            } else if (!attacking)
+            {
+                Destroy(PatrolPoints[0]);
+                Destroy(PatrolPoints[1]);
+                myRb.velocity = new Vector2(moveSpeed * rotateValue * chargeForce, myRb.velocity.y);
+            }
         }
         else if (EN_type == "llimona")
         {
             //Adaptar el prefab a l'enemic seleccionat
             myHitbox[0].SetActive(false);
-            myHitbox[1].SetActive(true);
-            myHitbox[2].SetActive(false);
+            myHitbox[1].SetActive(false);
+            myHitbox[2].SetActive(true);
             gameObject.transform.localScale = playerTransform.localScale;
         }
     }
     void shoot()
     {
         Instantiate(arrow, new Vector3 (bow.position.x, bow.position.y + 0.5f, bow.position.z), Quaternion.identity, this.gameObject.transform);
+    }
+    public void pinyaPatrolCreate()
+    {
+        if (PatrolPoints[0] == null && PatrolPoints[0] == null)
+        {
+            Instantiate(limitPatrol, pinyaPatrolPointsSpawners[0].position, transform.rotation, this.transform);
+            Instantiate(limitPatrol, pinyaPatrolPointsSpawners[1].position, transform.rotation, this.transform);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (EN_type == "pinya" && collision.CompareTag("RUN"))
+        {
+            if (collision.gameObject == PatrolPoints[0] | collision.gameObject == PatrolPoints[1])
+            {
+                rotateValue *= -1;
+            }
+        }
     }
 }
