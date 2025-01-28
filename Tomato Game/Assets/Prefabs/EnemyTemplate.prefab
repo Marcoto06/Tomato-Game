@@ -265,8 +265,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dc48a504c03cb469f50fccf4fb8ef6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EN_type: 
-  EN_HP: 0
+  EN_type: pinya
+  EN_HP: 100
   moveSpeed: 0
   attacking: 0
   player_in_range: 0
