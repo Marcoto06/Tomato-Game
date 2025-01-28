@@ -33,6 +33,7 @@ public class enemyVisionScript : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             gameObject.GetComponentInParent<enemyScript>().player_in_range = false;
+            gameObject.GetComponentInParent<enemyScript>().pinyaPatrolCreate();
         }
         if (gameObject.CompareTag("RUN"))
         {
