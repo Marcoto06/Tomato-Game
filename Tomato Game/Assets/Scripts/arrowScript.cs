@@ -17,6 +17,7 @@ public class arrowScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        transform.parent = null;
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
         if (player != null)
@@ -33,18 +34,11 @@ public class arrowScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //timer += Time.deltaTime;
 
-        //if (timer > 3 && shoot == false)
-        //{
-        //    rb.velocity = new Vector2(direction.x, direction.y).normalized * force;
-        //    shoot = true;
-        //    transform.parent = null;
-        //}
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") | collision.CompareTag("ground"))
         {
             Destroy(gameObject);
         }
