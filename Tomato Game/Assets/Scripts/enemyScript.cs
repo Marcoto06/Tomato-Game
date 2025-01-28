@@ -2,11 +2,9 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.XR;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class enemyScript : MonoBehaviour
 {
