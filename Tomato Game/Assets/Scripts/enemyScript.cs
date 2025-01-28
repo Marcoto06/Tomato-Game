@@ -161,7 +161,10 @@ public class enemyScript : MonoBehaviour
             myHitbox[2].SetActive(true);
             gameObject.transform.localScale = new Vector3(0.15f * -rotateValue, 0.15f, 0);
             //Atacar en proximitat del player
-            myRb.velocity = new Vector2(moveSpeed * rotateValue, myRb.velocity.y);
+            if (!attacking)
+            {
+                myRb.velocity = new Vector2(moveSpeed * rotateValue, myRb.velocity.y);
+            }
         }
     }
     void shoot()
