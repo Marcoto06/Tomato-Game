@@ -49,12 +49,22 @@ public class enemyScript : MonoBehaviour
         {
             moveSpeed = 2f;
             rotateValue = 1;
+            myHitbox[0].SetActive(false);
+            myHitbox[1].SetActive(true);
+            myHitbox[2].SetActive(false);
             gameObject.transform.localScale = new Vector3(0.09f * rotateValue, 0.09f, 0);
             pinyaPatrolCreate();
             mySprite.sprite = enemySprites[1];
         }
         else if (EN_type == "llimona")
         {
+            moveSpeed = 2.5f;
+            rotateValue = 1;
+            myHitbox[0].SetActive(false);
+            myHitbox[1].SetActive(true);
+            myHitbox[2].SetActive(false);
+            gameObject.transform.localScale = new Vector3(0.15f * -rotateValue, 0.15f, 0);
+            llimonaPatrolCreate();
             mySprite.sprite = enemySprites[2];
         }
     }
@@ -149,7 +159,9 @@ public class enemyScript : MonoBehaviour
             myHitbox[0].SetActive(false);
             myHitbox[1].SetActive(false);
             myHitbox[2].SetActive(true);
-            gameObject.transform.localScale = playerTransform.localScale;
+            gameObject.transform.localScale = new Vector3(0.15f * -rotateValue, 0.15f, 0);
+            //Atacar en proximitat del player
+            myRb.velocity = new Vector2(moveSpeed * rotateValue, myRb.velocity.y);
         }
     }
     void shoot()
@@ -164,10 +176,24 @@ public class enemyScript : MonoBehaviour
             Instantiate(limitPatrol, pinyaPatrolPointsSpawners[1].position, transform.rotation, this.transform);
         }
     }
+    public void llimonaPatrolCreate()
+    {
+        if (PatrolPoints[0] == null && PatrolPoints[0] == null)
+        {
+            Instantiate(limitPatrol, llimonaPatrolPointsSpawners[0].position, transform.rotation, this.transform);
+            Instantiate(limitPatrol, llimonaPatrolPointsSpawners[1].position, transform.rotation, this.transform);
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (EN_type == "pinya" && collision.CompareTag("RUN"))
+        {
+            if (collision.gameObject == PatrolPoints[0] | collision.gameObject == PatrolPoints[1])
+            {
+                rotateValue *= -1;
+            }
+        } else if (EN_type == "llimona" && collision.CompareTag("RUN"))
         {
             if (collision.gameObject == PatrolPoints[0] | collision.gameObject == PatrolPoints[1])
             {

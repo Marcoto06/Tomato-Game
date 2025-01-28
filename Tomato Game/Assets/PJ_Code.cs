@@ -131,8 +131,11 @@ public class movment : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        isGrounded = true;
-        anim.SetBool("isJumping", !isGrounded);
+        if (collision.CompareTag("ground"))
+        {
+            isGrounded = true;
+            anim.SetBool("isJumping", !isGrounded);
+        }
     }
 
     private IEnumerator Dash()
