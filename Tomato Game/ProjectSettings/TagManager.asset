@@ -10,6 +10,7 @@ TagManager:
   - enemy
   - ground
   - RUN
+  - patrolSpawn
   layers:
   - Default
   - TransparentFX
