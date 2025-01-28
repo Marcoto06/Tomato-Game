@@ -35,17 +35,17 @@ public class enemyScript : MonoBehaviour
         timer = 0;
         if (EN_type == "figa")
         {
-            EN_HP = 100; moveSpeed = 3f;
+             moveSpeed = 3f;
             mySprite.sprite = enemySprites[0];
         }
         else if (EN_type == "pinya")
         {
-            EN_HP = 350;
+            
             mySprite.sprite = enemySprites[1];
         }
         else if (EN_type == "llimona")
         {
-            EN_HP = 250;
+            
             mySprite.sprite = enemySprites[2];
         }
     }
