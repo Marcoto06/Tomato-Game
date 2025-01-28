@@ -10,7 +10,7 @@ using static UnityEditor.Searcher.SearcherWindow.Alignment;
 public class enemyScript : MonoBehaviour
 {
     public string EN_type;
-    public int EN_HP;
+    public float EN_HP;
     public float moveSpeed;
     public bool attacking;
     public bool player_in_range;

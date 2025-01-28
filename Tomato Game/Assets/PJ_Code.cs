@@ -33,10 +33,15 @@ public class movment : MonoBehaviour
     public float dashForce;
     public float dashingTime;
     public float dashingCooldown;
+    public bool isAttacking;
 
     public Animator anim;
     public SpriteRenderer PlayerSR;
 
+    public GameObject attackPoint;
+    public float radius;
+    public LayerMask enemies;
+    public float PJ_DAM;
 
     void Start()
     {
@@ -83,6 +88,20 @@ public class movment : MonoBehaviour
             anim.SetBool("isDashing", canDash);
             StartCoroutine(Dash());
         }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            isAttacking = true;
+            anim.SetBool("isAttacking", isAttacking);
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            if (isAttacking==true)
+            {
+                StartCoroutine(AttAn());
+            }
+            
+        }
     }
 
     private void FixedUpdate()
@@ -128,5 +147,26 @@ public class movment : MonoBehaviour
         isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
+    }
+    private IEnumerator AttAn()
+    {
+        yield return new WaitForSeconds(0.16f);
+        anim.SetBool("isAttacking", false);
+    }
+
+    public void Attack()
+    {
+        Collider2D[] enemy = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, enemies);
+
+        foreach (Collider2D enemyGameobject in enemy)
+        {
+            Debug.Log("Hit enemy");
+            enemyGameobject.GetComponent<enemyScript>().EN_HP -= PJ_DAM;
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(attackPoint.transform.position, radius);
     }
 }
