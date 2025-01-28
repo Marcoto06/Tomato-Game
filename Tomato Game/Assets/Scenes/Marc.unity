@@ -1186,8 +1186,12 @@ PrefabInstance:
       value: EnemyTemplate
       objectReference: {fileID: 0}
     - target: {fileID: 6758422171175995664, guid: a610f30e5f4ce6542954c610da77481d, type: 3}
+      propertyPath: EN_HP
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6758422171175995664, guid: a610f30e5f4ce6542954c610da77481d, type: 3}
       propertyPath: EN_type
-      value: pinya
+      value: figa
       objectReference: {fileID: 0}
     - target: {fileID: 7172377620316877809, guid: a610f30e5f4ce6542954c610da77481d, type: 3}
       propertyPath: m_LocalPosition.x
