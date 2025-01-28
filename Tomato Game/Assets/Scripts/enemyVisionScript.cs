@@ -22,6 +22,10 @@ public class enemyVisionScript : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             gameObject.GetComponentInParent<enemyScript>().player_in_range = true;
+            if (gameObject.CompareTag("RUN"))
+            {
+                gameObject.GetComponentInParent<enemyScript>().RUN = true;
+            }
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -29,6 +33,10 @@ public class enemyVisionScript : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             gameObject.GetComponentInParent<enemyScript>().player_in_range = false;
+        }
+        if (gameObject.CompareTag("RUN"))
+        {
+            gameObject.GetComponentInParent<enemyScript>().RUN = false;
         }
     }
 }
