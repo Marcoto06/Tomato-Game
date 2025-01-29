@@ -13,7 +13,6 @@ public class movment : MonoBehaviour
     [SerializeField] public float jumpForce;
     [SerializeField] public float fallMultiplaier;
     [SerializeField] public float jumpMultiplaier;
-    [SerializeField] public TrailRenderer tr;
 
     private Rigidbody2D rb;
 
@@ -56,6 +55,7 @@ public class movment : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
         vecGravity = new Vector2 (0, -Physics2D.gravity.y);
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -69,16 +69,21 @@ public class movment : MonoBehaviour
         if (current_class == "melee")
         {
             anim.SetBool("isMelee", true);
+            anim.SetBool("isDistance", false);
+            anim.SetBool("IsMage", false);
         }
         else if (current_class == "ranged")
         {
+            anim.SetBool("isMelee", false);
             anim.SetBool("isDistance", true);
+            anim.SetBool("IsMage", false);
         }
         else if (current_class == "mage")
         {
             anim.SetBool("IsMage", true);
+            anim.SetBool("isDistance", false);
+            anim.SetBool("isMelee", false);
             C_atk = "melee";
-            anim.SetBool("isRanged", false);
         }
     }
 
@@ -181,9 +186,7 @@ public class movment : MonoBehaviour
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
         rb.velocity = new Vector2(transform.localScale.x * dashForce, 0f);
-        tr.emitting = true;
         yield return new WaitForSeconds(dashingTime);
-        tr.emitting = false;
         rb.gravityScale = originalGravity;
         isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);
@@ -193,17 +196,6 @@ public class movment : MonoBehaviour
     {
         isAttacking = true;
         anim.SetBool("isAttacking", isAttacking);
-        if (current_class == "melee")
-        {
-            brancaGTomato.SetActive(true);
-        }
-        else if (current_class == "mage")
-        {
-            if (C_atk == "melee")
-            {
-                brancaNTomato.SetActive(true);
-            }
-        }
         if (current_class != "ranged")
         {
             yield return new WaitForSeconds(0.2666666672f);
@@ -250,6 +242,20 @@ public class movment : MonoBehaviour
         } else if (current_class == "mage")
         {
             Instantiate(N_dard, attackPoint.transform.position, Quaternion.identity, this.transform);
+        }
+    }
+    public void branca()
+    {
+        if (current_class == "melee")
+        {
+            brancaGTomato.SetActive(true);
+        }
+        else if (current_class == "mage")
+        {
+            if (C_atk == "melee")
+            {
+                brancaNTomato.SetActive(true);
+            }
         }
     }
 }
