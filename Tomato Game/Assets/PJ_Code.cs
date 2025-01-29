@@ -44,6 +44,10 @@ public class movment : MonoBehaviour
     public LayerMask enemies;
     public float PJ_DAM;
 
+    public int MAX_HP;
+    public int Current_HP;
+    public int knockBack;
+
     void Start()
     {
         vecGravity = new Vector2 (0, -Physics2D.gravity.y);
@@ -174,5 +178,14 @@ public class movment : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(attackPoint.transform.position, radius);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("enemy"))
+        {
+            Current_HP -= 1;
+            rb.velocity = new Vector2(-knockBack, rb.velocity.y);
+        }
     }
 }

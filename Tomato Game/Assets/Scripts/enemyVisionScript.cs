@@ -41,4 +41,12 @@ public class enemyVisionScript : MonoBehaviour
             gameObject.GetComponentInParent<enemyScript>().RUN = false;
         }
     }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (gameObject.CompareTag("rang") && collision.CompareTag("Player"))
+        {
+            Debug.Log("a");
+            gameObject.GetComponentInParent<enemyScript>().attacking = true;
+        }
+    }
 }
