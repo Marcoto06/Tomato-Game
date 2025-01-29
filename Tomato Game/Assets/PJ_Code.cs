@@ -52,6 +52,7 @@ public class movment : MonoBehaviour
     public int Current_HP;
     public int knockBack;
     public string current_class;
+    public string C_atk = "melee";
 
     void Start()
     {
@@ -76,6 +77,8 @@ public class movment : MonoBehaviour
         else if (current_class == "mage")
         {
             anim.SetBool("IsMage", true);
+            C_atk = "melee";
+            anim.SetBool("isRanged", false);
         }
     }
 
@@ -118,21 +121,25 @@ public class movment : MonoBehaviour
             StartCoroutine(Dash());
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetButtonDown("Fire1"))
         {
             if (isAttacking == false)
             {
                 StartCoroutine(AttAn());
             }
         }
-        //if (Input.GetMouseButtonUp(0))
-        //{
-        //    if (isAttacking==true)
-        //    {
-        //        StartCoroutine(AttAn());
-        //    }
-            
-        //}
+        if (Input.GetButtonDown("Fire2"))
+        {
+            if (C_atk == "melee")
+            {
+                C_atk = "ranged";
+                anim.SetBool("isRanged", true);
+            } else
+            {
+                C_atk = "melee";
+                anim.SetBool("isRanged", false);
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -185,18 +192,26 @@ public class movment : MonoBehaviour
     private IEnumerator AttAn()
     {
         isAttacking = true;
-        if(current_class == "melee")
+        anim.SetBool("isAttacking", isAttacking);
+        if (current_class == "melee")
         {
             brancaGTomato.SetActive(true);
-        } else if (current_class == "mage")
-        {
-            brancaNTomato.SetActive(true);
         }
-        anim.SetBool("isAttacking", isAttacking);
+        else if (current_class == "mage")
+        {
+            if (C_atk == "melee")
+            {
+                brancaNTomato.SetActive(true);
+            }
+        }
         if (current_class != "ranged")
         {
             yield return new WaitForSeconds(0.2666666672f);
-        } else { yield return new WaitForSeconds(0.4166666675f); }
+        } 
+        else
+        { 
+            yield return new WaitForSeconds(0.4166666675f); 
+        }
         brancaGTomato.SetActive(false);
         brancaNTomato.SetActive(false);
         anim.SetBool("isAttacking", false);
@@ -232,6 +247,9 @@ public class movment : MonoBehaviour
         if(current_class == "ranged")
         {
             Instantiate(dard, attackPoint.transform.position, Quaternion.identity, this.transform);
+        } else if (current_class == "mage")
+        {
+            Instantiate(N_dard, attackPoint.transform.position, Quaternion.identity, this.transform);
         }
     }
 }
