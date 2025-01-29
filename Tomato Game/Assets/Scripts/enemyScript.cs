@@ -167,7 +167,7 @@ public class enemyScript : MonoBehaviour
             {
                 Destroy(PatrolPoints[0]);
                 Destroy(PatrolPoints[1]);
-                anim.SetBool("P_isAttacking", true);
+                StartCoroutine(ChargePinya());
                 myRb.velocity = new Vector2(moveSpeed * rotateValue * chargeForce, myRb.velocity.y);
             }
         }
@@ -218,15 +218,15 @@ public class enemyScript : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (EN_type == "pinya" && collision.CompareTag("RUN"))
+        if (EN_type == "pinya" && collision.collider.CompareTag("RUN"))
         {
             if (collision.gameObject == PatrolPoints[0] | collision.gameObject == PatrolPoints[1])
             {
                 rotateValue *= -1;
             }
-        } else if (EN_type == "llimona" && collision.CompareTag("RUN"))
+        } else if (EN_type == "llimona" && collision.collider.CompareTag("RUN"))
         {
             if (collision.gameObject == PatrolPoints[0] | collision.gameObject == PatrolPoints[1])
             {
@@ -242,6 +242,17 @@ public class enemyScript : MonoBehaviour
         anim.SetBool("L_isAttacking", false);
         attacking = false;
     }
+    public IEnumerator ChargePinya()
+    {
+        anim.SetBool("P_isCharging", true);
+        myRb.velocity = new Vector2(0, 0);
+        yield return new WaitForSeconds(1);
+        anim.SetBool("P_isCharging", false);
+        anim.SetBool("P_isAttacking", true);
+        //attacking = false;
+    }
+
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(attackPoint.transform.position, radius);

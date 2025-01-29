@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1359847608786586494}
   - component: {fileID: 3975179021022684063}
   - component: {fileID: 7580270447724352270}
-  - component: {fileID: 3045882655675805523}
+  - component: {fileID: 4859039658727685043}
   m_Layer: 0
   m_Name: magic orb
   m_TagString: enemy
@@ -177,7 +177,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   force: 10
   shoot: 0
---- !u!95 &3045882655675805523
+--- !u!95 &4859039658727685043
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0

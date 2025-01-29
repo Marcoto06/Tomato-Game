@@ -25,14 +25,14 @@ public class playerProjectileScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("enemy") | collision.CompareTag("ground"))
+        if (collision.CompareTag("enemy"))
         {
             collision.GetComponentInParent<enemyScript>().EN_CHP -= player.GetComponent<movment>().PJ_DAM;
             Destroy(gameObject);
         }
-        else
+        else if (collision.CompareTag("ground"))
         {
-            return;
+            Destroy(gameObject);
         }
     }
 }

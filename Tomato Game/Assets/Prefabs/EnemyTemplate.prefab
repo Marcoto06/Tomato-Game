@@ -486,7 +486,7 @@ MonoBehaviour:
   rotateValue: 0
   RUN: 0
   patrolFlip: 0
-  chargeForce: 2
+  chargeForce: 5
   player: {fileID: 0}
   playerTransform: {fileID: 0}
   mySprite: {fileID: 4297139976974109178}
@@ -823,7 +823,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6330645919922047898
 Transform:
   m_ObjectHideFlags: 0
