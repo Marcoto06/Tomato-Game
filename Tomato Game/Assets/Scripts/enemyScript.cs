@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -31,7 +32,7 @@ public class enemyScript : MonoBehaviour
     public Transform[] llimonaPatrolPointsSpawners;
     public GameObject limitPatrol;
     public GameObject[] PatrolPoints;
-    private Animator anim;
+    public Animator anim;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +48,7 @@ public class enemyScript : MonoBehaviour
             moveSpeed = 3f;
              moveSpeed = 3f;
             mySprite.sprite = enemySprites[0];
+            anim.SetBool("isFiga", true);
         }
         else if (EN_type == "pinya")
         {
@@ -58,6 +60,7 @@ public class enemyScript : MonoBehaviour
             gameObject.transform.localScale = new Vector3(0.09f * rotateValue, 0.09f, 0);
             pinyaPatrolCreate();
             mySprite.sprite = enemySprites[1];
+            anim.SetBool("isPinya", true);
         }
         else if (EN_type == "llimona")
         {
@@ -69,6 +72,7 @@ public class enemyScript : MonoBehaviour
             gameObject.transform.localScale = new Vector3(0.15f * -rotateValue, 0.15f, 0);
             llimonaPatrolCreate();
             mySprite.sprite = enemySprites[2];
+            anim.SetBool("isLlimona", true);
         }
     }
 
@@ -158,11 +162,14 @@ public class enemyScript : MonoBehaviour
             //Atacar en proximitat del player
             if (!player_in_range)
             {
+                anim.SetFloat("P_Walk_velocity", Math.Abs(myRb.velocity.x));
                 myRb.velocity = new Vector2(moveSpeed * rotateValue, myRb.velocity.y);
+                anim.SetBool("P_isAttacking", false);
             } else if (!attacking)
             {
                 Destroy(PatrolPoints[0]);
                 Destroy(PatrolPoints[1]);
+                anim.SetBool("P_isAttacking", true);
                 myRb.velocity = new Vector2(moveSpeed * rotateValue * chargeForce, myRb.velocity.y);
             }
         }
@@ -173,6 +180,7 @@ public class enemyScript : MonoBehaviour
             myHitbox[1].SetActive(false);
             myHitbox[2].SetActive(true);
             gameObject.transform.localScale = new Vector3(0.15f * -rotateValue, 0.15f, 0);
+            anim.SetFloat("L_Walk_velocity", Math.Abs(myRb.velocity.x));
             //Atacar en proximitat del player
             if (!attacking)
             {
