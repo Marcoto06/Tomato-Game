@@ -9,7 +9,8 @@ using UnityEngine.XR;
 public class enemyScript : MonoBehaviour
 {
     public string EN_type;
-    public float EN_HP;
+    public float EN_MHP;
+    public float EN_CHP;
     public float moveSpeed;
     public bool attacking;
     public bool player_in_range;
@@ -30,9 +31,13 @@ public class enemyScript : MonoBehaviour
     public Transform[] llimonaPatrolPointsSpawners;
     public GameObject limitPatrol;
     public GameObject[] PatrolPoints;
+    private Animator anim;
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
+        EN_CHP = EN_MHP;
+
         player = GameObject.FindGameObjectWithTag("Player");
         playerTransform = player.GetComponent<Transform>();
         player_in_range = false;
@@ -70,6 +75,16 @@ public class enemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(EN_CHP<EN_MHP)
+        {
+            anim.SetTrigger("Attacked");
+        }
+
+        if (EN_CHP<=0)
+        {
+            anim.SetBool("isDead", true);
+        }
+
         Vector3 scale = gameObject.transform.localScale;
         if (EN_type == "figa")
         {
