@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 2943522192647957055}
   - component: {fileID: 510439615585312659}
   - component: {fileID: 6419358337437994339}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PJ
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -299,8 +299,11 @@ MonoBehaviour:
   radius: 0.69
   enemies:
     serializedVersion: 2
-    m_Bits: 0
-  PJ_DAM: 0
+    m_Bits: 64
+  PJ_DAM: 50
+  MAX_HP: 6
+  current_HP: 6
+  knockBack: 0
 --- !u!61 &6246767964494187041
 BoxCollider2D:
   m_ObjectHideFlags: 0
