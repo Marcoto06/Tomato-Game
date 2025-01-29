@@ -41,6 +41,7 @@ public class movment : MonoBehaviour
 
     public GameObject attackPoint;
     public GameObject brancaGTomato;
+    public GameObject brancaNTomato;
     public float radius;
     public LayerMask enemies;
     public float PJ_DAM;
@@ -117,18 +118,19 @@ public class movment : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            isAttacking = true;
-            brancaGTomato.SetActive(true);
-            anim.SetBool("isAttacking", isAttacking);
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
-            if (isAttacking==true)
+            if (isAttacking == false)
             {
                 StartCoroutine(AttAn());
             }
-            
         }
+        //if (Input.GetMouseButtonUp(0))
+        //{
+        //    if (isAttacking==true)
+        //    {
+        //        StartCoroutine(AttAn());
+        //    }
+            
+        //}
     }
 
     private void FixedUpdate()
@@ -180,9 +182,20 @@ public class movment : MonoBehaviour
     }
     private IEnumerator AttAn()
     {
-        yield return new WaitForSeconds(0.16f);
+        isAttacking = true;
+        if(current_class == "melee")
+        {
+            brancaGTomato.SetActive(true);
+        } else if (current_class == "mage")
+        {
+            brancaNTomato.SetActive(true);
+        }
+        anim.SetBool("isAttacking", isAttacking);
+        yield return new WaitForSeconds(0.2666666672f);
         brancaGTomato.SetActive(false);
+        brancaNTomato.SetActive(false);
         anim.SetBool("isAttacking", false);
+        isAttacking = false;
     }
 
     public void Attack()
