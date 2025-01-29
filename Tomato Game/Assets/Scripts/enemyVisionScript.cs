@@ -34,6 +34,7 @@ public class enemyVisionScript : MonoBehaviour
         {
             gameObject.GetComponentInParent<enemyScript>().player_in_range = false;
             gameObject.GetComponentInParent<enemyScript>().pinyaPatrolCreate();
+            gameObject.GetComponentInParent<enemyScript>().llimonaPatrolCreate();
         }
         if (gameObject.CompareTag("RUN"))
         {
