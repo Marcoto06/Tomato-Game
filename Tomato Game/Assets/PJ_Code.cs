@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.IO;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -47,12 +48,32 @@ public class movment : MonoBehaviour
     public int MAX_HP;
     public int Current_HP;
     public int knockBack;
+    public string current_class;
 
     void Start()
     {
         vecGravity = new Vector2 (0, -Physics2D.gravity.y);
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        string path = Application.persistentDataPath + "/saveData.json";
+        if (File.Exists(path))
+        {
+            string json = System.IO.File.ReadAllText(path);
+            saveData loadedData = JsonUtility.FromJson<saveData>(json);
+            current_class = loadedData.player_class;
+        }
+        if (current_class == "melee")
+        {
+            anim.SetBool("isMelee", true);
+        }
+        else if (current_class == "ranged")
+        {
+            anim.SetBool("isDistance", true);
+        }
+        else if (current_class == "mage")
+        {
+            anim.SetBool("IsMage", true);
+        }
     }
 
     void Update()
