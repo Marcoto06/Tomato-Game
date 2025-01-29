@@ -348,6 +348,7 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs: []
   m_BlendParameter: P_Walk_velocity
+  m_BlendParameter: F_Walk_velocity
   m_BlendParameterY: Blend
   m_MinThreshold: 0
   m_MaxThreshold: 1

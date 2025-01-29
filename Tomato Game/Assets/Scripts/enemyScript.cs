@@ -178,6 +178,11 @@ public class enemyScript : MonoBehaviour
             {
                 myRb.velocity = new Vector2(moveSpeed * rotateValue, myRb.velocity.y);
             }
+            if (player_in_range)
+            {
+                Destroy(PatrolPoints[0]);
+                Destroy(PatrolPoints[1]);
+            }
         }
     }
     void shoot()

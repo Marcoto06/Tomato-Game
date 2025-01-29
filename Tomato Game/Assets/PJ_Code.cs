@@ -158,7 +158,6 @@ public class movment : MonoBehaviour
         yield return new WaitForSeconds(0.16f);
         brancaGTomato.SetActive(false);
         anim.SetBool("isAttacking", false);
-
     }
 
     public void Attack()
