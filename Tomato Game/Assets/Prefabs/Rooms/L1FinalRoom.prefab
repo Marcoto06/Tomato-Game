@@ -31,6 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8764122213642350571}
+  - {fileID: 8550608698905233415}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &781835877116925943
@@ -98,7 +99,7 @@ GameObject:
   - component: {fileID: 7190726191342286737}
   m_Layer: 3
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,11 +113,11 @@ Transform:
   m_GameObject: {fileID: 7867265112974197704}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5602, y: -5.2274, z: 0}
-  m_LocalScale: {x: 19.13519, y: 0.97338897, z: 1}
+  m_LocalPosition: {x: 0.03608948, y: -4.787477, z: 0.019101214}
+  m_LocalScale: {x: 22.005466, y: 0.97338897, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8764122213642350571}
+  m_Father: {fileID: 1697264568134654418}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7183529099127775962
 SpriteRenderer:
@@ -243,7 +244,6 @@ Transform:
   m_LocalPosition: {x: -0.5241105, y: 0.43992275, z: 0.019101214}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 8550608698905233415}
+  m_Children: []
   m_Father: {fileID: 1697264568134654418}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

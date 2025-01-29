@@ -1,12 +1,11 @@
 using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.XR;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class enemyScript : MonoBehaviour
 {
@@ -33,7 +32,7 @@ public class enemyScript : MonoBehaviour
     public Transform[] llimonaPatrolPointsSpawners;
     public GameObject limitPatrol;
     public GameObject[] PatrolPoints;
-    private Animator anim;
+    public Animator anim;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,18 +48,31 @@ public class enemyScript : MonoBehaviour
             moveSpeed = 3f;
              moveSpeed = 3f;
             mySprite.sprite = enemySprites[0];
+            anim.SetBool("isFiga", true);
         }
         else if (EN_type == "pinya")
         {
             moveSpeed = 2f;
             rotateValue = 1;
+            myHitbox[0].SetActive(false);
+            myHitbox[1].SetActive(true);
+            myHitbox[2].SetActive(false);
             gameObject.transform.localScale = new Vector3(0.09f * rotateValue, 0.09f, 0);
             pinyaPatrolCreate();
             mySprite.sprite = enemySprites[1];
+            anim.SetBool("isPinya", true);
         }
         else if (EN_type == "llimona")
         {
+            moveSpeed = 2.5f;
+            rotateValue = 1;
+            myHitbox[0].SetActive(false);
+            myHitbox[1].SetActive(true);
+            myHitbox[2].SetActive(false);
+            gameObject.transform.localScale = new Vector3(0.15f * -rotateValue, 0.15f, 0);
+            llimonaPatrolCreate();
             mySprite.sprite = enemySprites[2];
+            anim.SetBool("isLlimona", true);
         }
     }
 
@@ -150,11 +162,14 @@ public class enemyScript : MonoBehaviour
             //Atacar en proximitat del player
             if (!player_in_range)
             {
+                anim.SetFloat("P_Walk_velocity", Math.Abs(myRb.velocity.x));
                 myRb.velocity = new Vector2(moveSpeed * rotateValue, myRb.velocity.y);
+                anim.SetBool("P_isAttacking", false);
             } else if (!attacking)
             {
                 Destroy(PatrolPoints[0]);
                 Destroy(PatrolPoints[1]);
+                anim.SetBool("P_isAttacking", true);
                 myRb.velocity = new Vector2(moveSpeed * rotateValue * chargeForce, myRb.velocity.y);
             }
         }
@@ -164,7 +179,18 @@ public class enemyScript : MonoBehaviour
             myHitbox[0].SetActive(false);
             myHitbox[1].SetActive(false);
             myHitbox[2].SetActive(true);
-            gameObject.transform.localScale = playerTransform.localScale;
+            gameObject.transform.localScale = new Vector3(0.15f * -rotateValue, 0.15f, 0);
+            anim.SetFloat("L_Walk_velocity", Math.Abs(myRb.velocity.x));
+            //Atacar en proximitat del player
+            if (!attacking)
+            {
+                myRb.velocity = new Vector2(moveSpeed * rotateValue, myRb.velocity.y);
+            }
+            if (player_in_range)
+            {
+                Destroy(PatrolPoints[0]);
+                Destroy(PatrolPoints[1]);
+            }
         }
     }
     void shoot()
@@ -179,10 +205,24 @@ public class enemyScript : MonoBehaviour
             Instantiate(limitPatrol, pinyaPatrolPointsSpawners[1].position, transform.rotation, this.transform);
         }
     }
+    public void llimonaPatrolCreate()
+    {
+        if (PatrolPoints[0] == null && PatrolPoints[0] == null)
+        {
+            Instantiate(limitPatrol, llimonaPatrolPointsSpawners[0].position, transform.rotation, this.transform);
+            Instantiate(limitPatrol, llimonaPatrolPointsSpawners[1].position, transform.rotation, this.transform);
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (EN_type == "pinya" && collision.CompareTag("RUN"))
+        {
+            if (collision.gameObject == PatrolPoints[0] | collision.gameObject == PatrolPoints[1])
+            {
+                rotateValue *= -1;
+            }
+        } else if (EN_type == "llimona" && collision.CompareTag("RUN"))
         {
             if (collision.gameObject == PatrolPoints[0] | collision.gameObject == PatrolPoints[1])
             {

@@ -131,8 +131,11 @@ public class movment : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        isGrounded = true;
-        anim.SetBool("isJumping", !isGrounded);
+        if (collision.CompareTag("ground"))
+        {
+            isGrounded = true;
+            anim.SetBool("isJumping", !isGrounded);
+        }
     }
 
     private IEnumerator Dash()
@@ -155,7 +158,6 @@ public class movment : MonoBehaviour
         yield return new WaitForSeconds(0.16f);
         brancaGTomato.SetActive(false);
         anim.SetBool("isAttacking", false);
-
     }
 
     public void Attack()
