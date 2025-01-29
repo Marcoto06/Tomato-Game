@@ -236,20 +236,24 @@ public class enemyScript : MonoBehaviour
 
     public IEnumerator AttackLlimona()
     {
-        Debug.Log("a");
-        Collider2D[] playerCol = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, players);
         anim.SetBool("L_isAttacking", true);
-        foreach (Collider2D playerGameobject in playerCol)
-        {
-            Debug.Log("Hit player");
-            playerGameobject.GetComponent<movment>().Current_HP -= 1;
-        }
-        yield return new WaitForSeconds(1);
+        myRb.velocity = new Vector2(0, 0);
+        yield return new WaitForSeconds(2);
         anim.SetBool("L_isAttacking", false);
         attacking = false;
     }
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(attackPoint.transform.position, radius);
+    }
+
+    public void L_Attack()
+    {
+        Collider2D[] playerCol = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, players);
+        foreach (Collider2D playerGameobject in playerCol)
+        {
+            Debug.Log("Hit player");
+            playerGameobject.GetComponent<movment>().Current_HP -= 1;
+        }
     }
 }
