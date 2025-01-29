@@ -664,7 +664,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 7
 --- !u!212 &1108910203
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -827,6 +827,14 @@ PrefabInstance:
     - target: {fileID: 909588545389712059, guid: d3a86076c8c2085479076bfc0ffd8cb9, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464494365664874128, guid: d3a86076c8c2085479076bfc0ffd8cb9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464494365664874128, guid: d3a86076c8c2085479076bfc0ffd8cb9, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5033440948142955614, guid: d3a86076c8c2085479076bfc0ffd8cb9, type: 3}
       propertyPath: m_LocalPosition.x
