@@ -187,6 +187,7 @@ public class enemyScript : MonoBehaviour
             else
             {
                 Debug.Log("a");
+                myRb.velocity = new Vector2(0, 0);
                 StartCoroutine(AttackLlimona());
             }
             if (player_in_range)
@@ -237,7 +238,6 @@ public class enemyScript : MonoBehaviour
     public IEnumerator AttackLlimona()
     {
         anim.SetBool("L_isAttacking", true);
-        myRb.velocity = new Vector2(0, 0);
         yield return new WaitForSeconds(2);
         anim.SetBool("L_isAttacking", false);
         attacking = false;

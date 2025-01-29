@@ -259,6 +259,10 @@ PrefabInstance:
       value: 8.5
       objectReference: {fileID: 0}
     - target: {fileID: 6729223403926952122, guid: d3a86076c8c2085479076bfc0ffd8cb9, type: 3}
+      propertyPath: current_class
+      value: ranged
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729223403926952122, guid: d3a86076c8c2085479076bfc0ffd8cb9, type: 3}
       propertyPath: enemies.m_Bits
       value: 64
       objectReference: {fileID: 0}

@@ -42,6 +42,8 @@ public class movment : MonoBehaviour
     public GameObject attackPoint;
     public GameObject brancaGTomato;
     public GameObject brancaNTomato;
+    public GameObject dard;
+    public GameObject N_dard;
     public float radius;
     public LayerMask enemies;
     public float PJ_DAM;
@@ -191,7 +193,10 @@ public class movment : MonoBehaviour
             brancaNTomato.SetActive(true);
         }
         anim.SetBool("isAttacking", isAttacking);
-        yield return new WaitForSeconds(0.2666666672f);
+        if (current_class != "ranged")
+        {
+            yield return new WaitForSeconds(0.2666666672f);
+        } else { yield return new WaitForSeconds(0.4166666675f); }
         brancaGTomato.SetActive(false);
         brancaNTomato.SetActive(false);
         anim.SetBool("isAttacking", false);
@@ -220,6 +225,13 @@ public class movment : MonoBehaviour
         {
             Current_HP -= 1;
             rb.velocity = new Vector2(-knockBack, rb.velocity.y);
+        }
+    }
+    public void shoot()
+    {
+        if(current_class == "ranged")
+        {
+            Instantiate(dard, attackPoint.transform.position, Quaternion.identity, this.transform);
         }
     }
 }
