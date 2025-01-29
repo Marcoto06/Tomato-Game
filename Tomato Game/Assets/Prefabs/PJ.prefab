@@ -297,6 +297,7 @@ MonoBehaviour:
   PlayerSR: {fileID: 0}
   attackPoint: {fileID: 1423835173305282254}
   brancaGTomato: {fileID: 909588545389712059}
+  brancaNTomato: {fileID: 8255937009326067467}
   radius: 0.69
   enemies:
     serializedVersion: 2
@@ -305,6 +306,7 @@ MonoBehaviour:
   MAX_HP: 6
   Current_HP: 0
   knockBack: 0
+  current_class: 
 --- !u!61 &6246767964494187041
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -535,7 +537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7629623752593963332
 Transform:
   m_ObjectHideFlags: 0
