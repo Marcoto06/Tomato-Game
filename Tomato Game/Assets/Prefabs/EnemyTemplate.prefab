@@ -386,6 +386,7 @@ GameObject:
   - component: {fileID: 4297139976974109178}
   - component: {fileID: 6758422171175995664}
   - component: {fileID: 6546462876030207680}
+  - component: {fileID: 7283414066132600159}
   m_Layer: 0
   m_Name: EnemyTemplate
   m_TagString: enemy
@@ -476,7 +477,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EN_type: 
-  EN_HP: 100
+  EN_MHP: 0
+  EN_CHP: 0
   moveSpeed: 0
   attacking: 0
   player_in_range: 0
@@ -509,6 +511,7 @@ MonoBehaviour:
   PatrolPoints:
   - {fileID: 0}
   - {fileID: 0}
+  anim: {fileID: 7283414066132600159}
 --- !u!50 &6546462876030207680
 Rigidbody2D:
   serializedVersion: 4
@@ -536,6 +539,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &7283414066132600159
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2530351197659488831}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 169ff8b58d9085e4fb9ff05a503362fa, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3069893707435048777
 GameObject:
   m_ObjectHideFlags: 0
