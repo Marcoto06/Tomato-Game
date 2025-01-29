@@ -15,7 +15,7 @@ public class playerProjectileScript : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         transform.parent = null;
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = new Vector2(1, 0).normalized * force;
+        rb.velocity = new Vector2(1*player.transform.localScale.x, 0).normalized * force;
     }
 
     // Update is called once per frame
