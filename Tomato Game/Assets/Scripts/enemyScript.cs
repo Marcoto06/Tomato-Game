@@ -33,6 +33,9 @@ public class enemyScript : MonoBehaviour
     public GameObject limitPatrol;
     public GameObject[] PatrolPoints;
     public Animator anim;
+    public LayerMask players;
+    public GameObject attackPoint;
+    public float radius;
     // Start is called before the first frame update
     void Start()
     {
@@ -79,11 +82,6 @@ public class enemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(EN_CHP<EN_MHP)
-        {
-            anim.SetTrigger("Attacked");
-        }
-
         if (EN_CHP<=0)
         {
             anim.SetBool("isDead", true);
@@ -119,7 +117,7 @@ public class enemyScript : MonoBehaviour
             gameObject.transform.localScale = new Vector3(playerTransform.localScale.x * rotateValue, playerTransform.localScale.y, playerTransform.localScale.z);
 
             //Actuar nomes en proximitat del player
-            if (player_in_range == true && RUN == false)
+            if (player_in_range == true)
             {
                 Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
                 bow.rotation = q;
@@ -131,7 +129,7 @@ public class enemyScript : MonoBehaviour
                     shoot();
                 }
             }
-            else if (RUN == true)
+            if (RUN == true)
             {
                 if (playerTransform.position.x < gameObject.transform.position.x && playerTransform.localScale.x > 0)
                 {
@@ -182,9 +180,14 @@ public class enemyScript : MonoBehaviour
             gameObject.transform.localScale = new Vector3(0.15f * -rotateValue, 0.15f, 0);
             anim.SetFloat("L_Walk_velocity", Math.Abs(myRb.velocity.x));
             //Atacar en proximitat del player
-            if (!attacking)
+            if (attacking == false)
             {
                 myRb.velocity = new Vector2(moveSpeed * rotateValue, myRb.velocity.y);
+            }
+            else
+            {
+                Debug.Log("a");
+                StartCoroutine(AttackLlimona());
             }
             if (player_in_range)
             {
@@ -229,5 +232,24 @@ public class enemyScript : MonoBehaviour
                 rotateValue *= -1;
             }
         }
+    }
+
+    public IEnumerator AttackLlimona()
+    {
+        Debug.Log("a");
+        Collider2D[] playerCol = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, players);
+        anim.SetBool("L_isAttacking", true);
+        foreach (Collider2D playerGameobject in playerCol)
+        {
+            Debug.Log("Hit player");
+            playerGameobject.GetComponent<movment>().Current_HP -= 1;
+        }
+        yield return new WaitForSeconds(1);
+        anim.SetBool("L_isAttacking", false);
+        attacking = false;
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(attackPoint.transform.position, radius);
     }
 }
