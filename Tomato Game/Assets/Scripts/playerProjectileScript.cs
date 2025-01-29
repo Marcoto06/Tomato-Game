@@ -15,7 +15,7 @@ public class playerProjectileScript : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         transform.parent = null;
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = new Vector2(1, 0).normalized * force;
+        rb.velocity = new Vector2(1*player.transform.localScale.x, 0).normalized * force;
     }
 
     // Update is called once per frame
@@ -25,14 +25,14 @@ public class playerProjectileScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("enemy") | collision.CompareTag("ground"))
+        if (collision.CompareTag("enemy"))
         {
             collision.GetComponentInParent<enemyScript>().EN_CHP -= player.GetComponent<movment>().PJ_DAM;
             Destroy(gameObject);
         }
-        else
+        else if (collision.CompareTag("ground"))
         {
-            return;
+            Destroy(gameObject);
         }
     }
 }
