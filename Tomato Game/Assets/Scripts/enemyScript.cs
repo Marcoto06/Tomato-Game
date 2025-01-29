@@ -36,6 +36,7 @@ public class enemyScript : MonoBehaviour
     public LayerMask players;
     public GameObject attackPoint;
     public float radius;
+    Vector3 m_YAxis;
     // Start is called before the first frame update
     void Start()
     {
@@ -235,6 +236,8 @@ public class enemyScript : MonoBehaviour
         }
     }
 
+    
+
     public IEnumerator AttackLlimona()
     {
         anim.SetBool("L_isAttacking", true);
@@ -245,10 +248,12 @@ public class enemyScript : MonoBehaviour
     public IEnumerator ChargePinya()
     {
         anim.SetBool("P_isCharging", true);
-        myRb.velocity = new Vector2(0, 0);
+        myRb.constraints = RigidbodyConstraints2D.FreezePosition;
         yield return new WaitForSeconds(1);
         anim.SetBool("P_isCharging", false);
         anim.SetBool("P_isAttacking", true);
+        myRb.constraints = RigidbodyConstraints2D.None;
+        myRb.constraints = RigidbodyConstraints2D.FreezeRotation;
         //attacking = false;
     }
 
