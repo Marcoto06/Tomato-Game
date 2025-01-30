@@ -36,6 +36,9 @@ public class enemyScript : MonoBehaviour
     public LayerMask players;
     public GameObject attackPoint;
     public float radius;
+    public bool hit;
+    public int knockBackRotate;
+    public int knockBack;
     Vector3 m_YAxis;
     // Start is called before the first frame update
     void Start()
@@ -88,6 +91,10 @@ public class enemyScript : MonoBehaviour
         if (EN_CHP<=0)
         {
             anim.SetBool("isDead", true);
+        }
+        if(hit == true)
+        {
+            StartCoroutine(Hit());
         }
 
         Vector3 scale = gameObject.transform.localScale;
@@ -279,5 +286,14 @@ public class enemyScript : MonoBehaviour
             playerGameobject.GetComponent<movment>().knockBackRotate = rotateValue;
             playerGameobject.GetComponent<movment>().hit = true;
         }
+    }
+
+    public IEnumerator Hit()
+    {
+        anim.SetBool("isHit", true);
+        myRb.velocity = new Vector2(knockBack * knockBackRotate, myRb.velocity.y);
+        yield return new WaitForSeconds(0.05f);
+        hit = false;
+        anim.SetBool("isHit", false);
     }
 }
