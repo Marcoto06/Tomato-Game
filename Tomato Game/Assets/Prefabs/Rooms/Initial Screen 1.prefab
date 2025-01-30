@@ -27,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 5482665934419194171}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5602, y: -5.2274, z: 0}
-  m_LocalScale: {x: 19.13519, y: 0.97338897, z: 1}
+  m_LocalPosition: {x: 155.0545, y: -5.2274, z: 0}
+  m_LocalScale: {x: 355.61768, y: 0.97338897, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6640784727868353397}
@@ -238,7 +238,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9172a13c82ed65f45bde0eae6a571afa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 76a7ad36c657a8d44b744f878be1f2cc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -426,6 +426,7 @@ MonoBehaviour:
   manager: {fileID: 4220718333158126399, guid: f00e5e119f7689947a7de8bb710e3727, type: 3}
   Rooms:
   - {fileID: 5748142927834897940, guid: 2c63d863c22f29f4191b380b83a6c9a3, type: 3}
+  - {fileID: 5748142927834897940, guid: b17cd707edc10ae42b844df96db70a49, type: 3}
   finalRoom: {fileID: 0}
   safeRoom: {fileID: 0}
   upRoom: {fileID: 0}

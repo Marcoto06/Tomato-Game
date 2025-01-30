@@ -166,12 +166,9 @@ public class enemyScript : MonoBehaviour
                 anim.SetFloat("P_Walk_velocity", Math.Abs(myRb.velocity.x));
                 myRb.velocity = new Vector2(moveSpeed * rotateValue, myRb.velocity.y);
                 anim.SetBool("P_isAttacking", false);
-            } else if (!attacking)
+            } else 
             {
-                Destroy(PatrolPoints[0]);
-                Destroy(PatrolPoints[1]);
                 StartCoroutine(ChargePinya());
-                myRb.velocity = new Vector2(moveSpeed * rotateValue * chargeForce, myRb.velocity.y);
             }
         }
         else if (EN_type == "llimona")
@@ -252,6 +249,8 @@ public class enemyScript : MonoBehaviour
     }
     public IEnumerator ChargePinya()
     {
+        Destroy(PatrolPoints[0]);
+        Destroy(PatrolPoints[1]);
         anim.SetBool("P_isCharging", true);
         myRb.constraints = RigidbodyConstraints2D.FreezePosition;
         yield return new WaitForSeconds(2);
@@ -259,6 +258,9 @@ public class enemyScript : MonoBehaviour
         anim.SetBool("P_isAttacking", true);
         myRb.constraints = RigidbodyConstraints2D.None;
         myRb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        myRb.velocity = new Vector2(moveSpeed * rotateValue * chargeForce, myRb.velocity.y);
+        yield return new WaitForSeconds(0.5f);
+        player_in_range = false;
     }
 
 

@@ -442,6 +442,7 @@ GameObject:
   m_Component:
   - component: {fileID: 532348697}
   - component: {fileID: 532348696}
+  - component: {fileID: 532348698}
   m_Layer: 0
   m_Name: RunManager
   m_TagString: manager
@@ -467,8 +468,8 @@ MonoBehaviour:
   eventSystem: {fileID: 144807531}
   resumeButton: {fileID: 1635257279}
   fons:
-  - {fileID: 21300000, guid: 9172a13c82ed65f45bde0eae6a571afa, type: 3}
-  - {fileID: 21300000, guid: ac81c86110b684d4fa71da499372f145, type: 3}
+  - {fileID: 21300000, guid: 76a7ad36c657a8d44b744f878be1f2cc, type: 3}
+  - {fileID: 21300000, guid: e2728679ae167424ea0595dcf7ad736e, type: 3}
   ranged_lvl: 0
   melee_lvl: 0
   mage_lvl: 0
@@ -488,6 +489,102 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &532348698
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532348695}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 8fcddac5a6129774b82c202f3397d2e4, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &546122152 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8678639263514399024, guid: f00e5e119f7689947a7de8bb710e3727, type: 3}
@@ -649,7 +746,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6758422171175995664, guid: a610f30e5f4ce6542954c610da77481d, type: 3}
       propertyPath: EN_type
-      value: llimona
+      value: pinya
       objectReference: {fileID: 0}
     - target: {fileID: 6758422171175995664, guid: a610f30e5f4ce6542954c610da77481d, type: 3}
       propertyPath: players.m_Bits
