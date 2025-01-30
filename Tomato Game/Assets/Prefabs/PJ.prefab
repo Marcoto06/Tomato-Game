@@ -286,8 +286,10 @@ MonoBehaviour:
   jumpMultiplaier: 2
   groundCheck: {fileID: 6653182101081002809}
   whatIsGround:
-    serializedVersion: 2
+  - serializedVersion: 2
     m_Bits: 8
+  - serializedVersion: 2
+    m_Bits: 264
   dashForce: 100
   dashingTime: 0.3
   dashingCooldown: 2

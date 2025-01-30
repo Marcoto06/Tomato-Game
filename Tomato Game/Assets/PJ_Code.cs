@@ -18,7 +18,7 @@ public class movment : MonoBehaviour
 
     public Transform groundCheck;
 
-    public LayerMask whatIsGround;
+    public LayerMask[] whatIsGround;
 
     Vector2 vecGravity;
 
@@ -58,7 +58,7 @@ public class movment : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1;
-        vecGravity = new Vector2 (0, -Physics2D.gravity.y);
+        vecGravity = new Vector2(0, -Physics2D.gravity.y);
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         string path = Application.persistentDataPath + "/saveData.json";
@@ -99,7 +99,7 @@ public class movment : MonoBehaviour
 
         horizontal = Input.GetAxisRaw("Horizontal");
 
-        if (horizontal > .1f || horizontal < -.1f )
+        if (horizontal > .1f || horizontal < -.1f)
         {
             anim.SetBool("isWalking", true);
         }
@@ -117,7 +117,7 @@ public class movment : MonoBehaviour
             anim.SetBool("isJumping", !isGrounded);
         }
 
-        if (rb.velocity.y <0)
+        if (rb.velocity.y < 0)
         {
             rb.velocity -= vecGravity * fallMultiplaier * Time.deltaTime;
         }
@@ -141,7 +141,8 @@ public class movment : MonoBehaviour
             {
                 C_atk = "ranged";
                 anim.SetBool("isRanged", true);
-            } else
+            }
+            else
             {
                 C_atk = "melee";
                 anim.SetBool("isRanged", false);
@@ -169,7 +170,7 @@ public class movment : MonoBehaviour
 
     private void Flip()
     {
-        if (isFacingRight && horizontal<0f || !isFacingRight && horizontal>0f)
+        if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
         {
             isFacingRight = !isFacingRight;
             Vector3 localScale = transform.localScale;
@@ -180,7 +181,7 @@ public class movment : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("ground"))
+        if (collision.CompareTag("ground") | collision.CompareTag("wall"))
         {
             isGrounded = true;
             anim.SetBool("isJumping", !isGrounded);
@@ -207,10 +208,10 @@ public class movment : MonoBehaviour
         if (current_class != "ranged")
         {
             yield return new WaitForSeconds(0.2666666672f);
-        } 
+        }
         else
-        { 
-            yield return new WaitForSeconds(0.4166666675f); 
+        {
+            yield return new WaitForSeconds(0.4166666675f);
         }
         brancaGTomato.SetActive(false);
         brancaNTomato.SetActive(false);
@@ -227,6 +228,7 @@ public class movment : MonoBehaviour
             Debug.Log("Hit enemy");
             enemyGameobject.GetComponentInParent<enemyScript>().EN_CHP -= PJ_DAM;
             enemyGameobject.GetComponentInParent<enemyScript>().hit = true;
+            enemyGameobject.GetComponentInParent<enemyScript>().knockBackRotate = gameObject.transform.localScale.x;
         }
     }
 
@@ -245,10 +247,11 @@ public class movment : MonoBehaviour
     }
     public void shoot()
     {
-        if(current_class == "ranged")
+        if (current_class == "ranged")
         {
             Instantiate(dard, attackPoint.transform.position, Quaternion.identity, this.transform);
-        } else if (current_class == "mage")
+        }
+        else if (current_class == "mage")
         {
             Instantiate(N_dard, attackPoint.transform.position, Quaternion.identity, this.transform);
         }
