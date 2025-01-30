@@ -9,7 +9,7 @@ public class interactArea : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        manager = GameObject.FindGameObjectWithTag("manager");
+        manager = GameObject.FindGameObjectWithTag("GameController");
     }
 
     // Update is called once per frame
@@ -22,7 +22,8 @@ public class interactArea : MonoBehaviour
         if (gameObject.CompareTag("door") && collision.CompareTag("Player"))
         {
             if (Input.GetButtonDown("Jump"))
-            {
+            {  
+                Debug.Log("jajajsajdj");
                 if (manager.GetComponent<roomManager>().floor == 0)
                 {
                     SceneManager.LoadScene("Nv2");
