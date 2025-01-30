@@ -6,6 +6,7 @@ using UnityEngine;
 public class saveData
 {
     public string player_class;
+    public int current_HP;
     public int ranged_lvl;
     public int melee_lvl;
     public int mage_lvl;

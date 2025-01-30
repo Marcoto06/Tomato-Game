@@ -39,6 +39,7 @@ public class movment : MonoBehaviour
     public SpriteRenderer PlayerSR;
 
     public GameObject attackPoint;
+    public GameObject manager;
     public GameObject brancaGTomato;
     public GameObject brancaNTomato;
     public GameObject dard;
@@ -57,6 +58,7 @@ public class movment : MonoBehaviour
 
     void Start()
     {
+        manager = GameObject.FindGameObjectWithTag("manager");
         Time.timeScale = 1;
         vecGravity = new Vector2(0, -Physics2D.gravity.y);
         rb = GetComponent<Rigidbody2D>();
@@ -67,6 +69,13 @@ public class movment : MonoBehaviour
             string json = System.IO.File.ReadAllText(path);
             saveData loadedData = JsonUtility.FromJson<saveData>(json);
             current_class = loadedData.player_class;
+            if (manager.GetComponent<roomManager>().floor == 0)
+            {
+                Current_HP = 6;
+            } else
+            {
+                Current_HP = loadedData.current_HP;
+            }
         }
         if (current_class == "melee")
         {
@@ -151,6 +160,10 @@ public class movment : MonoBehaviour
         if (hit == true)
         {
             StartCoroutine(Hit());
+        }
+        if(Current_HP <= 0)
+        {
+            StartCoroutine(Die());
         }
     }
 
@@ -270,7 +283,6 @@ public class movment : MonoBehaviour
             }
         }
     }
-
     public IEnumerator Hit()
     {
         anim.SetBool("isHit", true);
@@ -278,5 +290,11 @@ public class movment : MonoBehaviour
         yield return new WaitForSeconds(0.05f);
         hit = false;
         anim.SetBool("isHit", false);
+    }
+    public IEnumerator Die()
+    {
+        anim.SetBool("isDead", true);
+        yield return new WaitForSeconds(0.4333333342f);
+        Destroy(gameObject);
     }
 }

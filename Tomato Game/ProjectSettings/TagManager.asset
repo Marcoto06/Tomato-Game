@@ -13,6 +13,7 @@ TagManager:
   - patrolSpawn
   - rang
   - manager
+  - wall
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - UI
   - Enemy
   - Player
-  - 
+  - Wall
   - 
   - 
   - 
