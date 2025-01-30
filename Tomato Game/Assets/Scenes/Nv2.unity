@@ -732,6 +732,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyTemplate
       objectReference: {fileID: 0}
+    - target: {fileID: 2530351197659488831, guid: a610f30e5f4ce6542954c610da77481d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6758422171175995664, guid: a610f30e5f4ce6542954c610da77481d, type: 3}
       propertyPath: EN_CHP
       value: 100
