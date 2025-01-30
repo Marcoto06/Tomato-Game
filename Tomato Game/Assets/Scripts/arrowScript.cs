@@ -38,6 +38,7 @@ public class arrowScript : MonoBehaviour
     {
         if (collision.CompareTag("Player") | collision.CompareTag("ground"))
         {
+            collision.GetComponentInParent<movment>().hit = true;
             Destroy(gameObject);
         }
         else
