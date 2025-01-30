@@ -7,6 +7,7 @@ public class cameraManager : MonoBehaviour
     public GameObject followObject;
     public GameObject finalRoom;
     public GameObject Player;
+    public GameObject finalWall;
     public Transform followTransform;
     // Start is called before the first frame update
     void Start()
@@ -21,10 +22,13 @@ public class cameraManager : MonoBehaviour
         if (finalRoom == null)
         {
             finalRoom = GameObject.FindGameObjectWithTag("finalRoom");
+            finalWall = GameObject.FindGameObjectWithTag("finalWall");
+            finalWall.SetActive(false);
         }
         if (Player.transform.position.x > finalRoom.transform.position.x)
         {
             followObject = finalRoom;
+            finalWall.SetActive(true);
         }
         followTransform = followObject.GetComponent<Transform>();
         if (followTransform.position.x < 0)
