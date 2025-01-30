@@ -45,7 +45,6 @@ public class enemyVisionScript : MonoBehaviour
     {
         if (gameObject.CompareTag("rang") && collision.CompareTag("Player"))
         {
-            Debug.Log("a");
             gameObject.GetComponentInParent<enemyScript>().attacking = true;
         }
     }

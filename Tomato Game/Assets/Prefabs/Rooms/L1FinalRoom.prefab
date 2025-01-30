@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1697264568134654418}
   - component: {fileID: 781835877116925943}
+  - component: {fileID: 3098474458669364274}
   m_Layer: 0
   m_Name: L1FinalRoom
   m_TagString: finalRoom
@@ -86,6 +87,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3098474458669364274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3386634467186265017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c21541fd7648981429b13c2e255265ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 0}
+  mySprite: {fileID: 0}
 --- !u!1 &7867265112974197704
 GameObject:
   m_ObjectHideFlags: 0

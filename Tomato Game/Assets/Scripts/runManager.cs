@@ -13,12 +13,15 @@ public class runManager : MonoBehaviour
     public GameObject manager;
     public GameObject eventSystem;
     public GameObject resumeButton;
+    public Sprite[] fons;
     public int ranged_lvl;
     public int melee_lvl;
     public int mage_lvl;
+    public int ultimFons;
     // Start is called before the first frame update
     void Start()
     {
+        ultimFons = 0;
         paused = false;
     }
 

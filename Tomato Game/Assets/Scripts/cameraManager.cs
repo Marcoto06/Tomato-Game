@@ -5,16 +5,27 @@ using UnityEngine;
 public class cameraManager : MonoBehaviour
 {
     public GameObject followObject;
+    public GameObject finalRoom;
+    public GameObject Player;
     public Transform followTransform;
     // Start is called before the first frame update
     void Start()
     {
-        
+        Player = GameObject.FindGameObjectWithTag("Player");
+        followObject = Player;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (finalRoom == null)
+        {
+            finalRoom = GameObject.FindGameObjectWithTag("finalRoom");
+        }
+        if (Player.transform.position.x > finalRoom.transform.position.x)
+        {
+            followObject = finalRoom;
+        }
         followTransform = followObject.GetComponent<Transform>();
         if (followTransform.position.x < 0)
         {
