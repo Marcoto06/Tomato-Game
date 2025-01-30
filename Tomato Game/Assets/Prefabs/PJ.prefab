@@ -297,10 +297,12 @@ MonoBehaviour:
   anim: {fileID: 0}
   PlayerSR: {fileID: 0}
   attackPoint: {fileID: 1423835173305282254}
+  manager: {fileID: 0}
   brancaGTomato: {fileID: 909588545389712059}
   brancaNTomato: {fileID: 8255937009326067467}
   dard: {fileID: 8916517526082023811, guid: d6853d62d7d3d75488aefb6619506591, type: 3}
   N_dard: {fileID: 0}
+  GameOver: {fileID: 0}
   radius: 0.69
   enemies:
     serializedVersion: 2

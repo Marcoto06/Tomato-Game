@@ -17,6 +17,7 @@ TagManager:
   - finalWall
   - bossManager
   - door
+  - gameOver
   layers:
   - Default
   - TransparentFX
