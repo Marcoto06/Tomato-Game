@@ -295,6 +295,7 @@ public class movment : MonoBehaviour
     {
         anim.SetBool("isDead", true);
         yield return new WaitForSeconds(0.4333333342f);
+        anim.SetBool("isGameOver", true);
         Destroy(gameObject);
     }
 }
