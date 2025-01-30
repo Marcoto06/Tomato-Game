@@ -269,8 +269,10 @@ public class movment : MonoBehaviour
 
     public IEnumerator Hit()
     {
+        anim.SetBool("isHit", true);
         rb.velocity = new Vector2(knockBack * knockBackRotate, rb.velocity.y);
         yield return new WaitForSeconds(0.05f);
         hit = false;
+        anim.SetBool("isHit", false);
     }
 }
