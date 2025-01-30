@@ -44,7 +44,6 @@ public class enemyScript : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        EN_CHP = EN_MHP;
 
         player = GameObject.FindGameObjectWithTag("Player");
         playerTransform = player.GetComponent<Transform>();
@@ -52,6 +51,7 @@ public class enemyScript : MonoBehaviour
         timer = 0;
         if (EN_type == "figa")
         {
+            EN_MHP = 75;
             moveSpeed = 3f;
              moveSpeed = 3f;
             mySprite.sprite = enemySprites[0];
@@ -59,6 +59,7 @@ public class enemyScript : MonoBehaviour
         }
         else if (EN_type == "pinya")
         {
+            EN_MHP = 200;
             moveSpeed = 2f;
             rotateValue = 1;
             myHitbox[0].SetActive(false);
@@ -71,6 +72,7 @@ public class enemyScript : MonoBehaviour
         }
         else if (EN_type == "llimona")
         {
+            EN_MHP = 100;
             moveSpeed = 2.5f;
             rotateValue = 1;
             myHitbox[0].SetActive(false);
@@ -81,6 +83,8 @@ public class enemyScript : MonoBehaviour
             mySprite.sprite = enemySprites[2];
             anim.SetBool("isLlimona", true);
         }
+
+        EN_CHP = EN_MHP;
     }
 
     // Update is called once per frame
