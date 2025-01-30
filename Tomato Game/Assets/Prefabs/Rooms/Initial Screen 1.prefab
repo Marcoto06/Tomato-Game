@@ -427,6 +427,7 @@ MonoBehaviour:
   Rooms:
   - {fileID: 5748142927834897940, guid: 2c63d863c22f29f4191b380b83a6c9a3, type: 3}
   - {fileID: 5748142927834897940, guid: b17cd707edc10ae42b844df96db70a49, type: 3}
+  - {fileID: 5748142927834897940, guid: 337c8bad1d29c524c8d1571920f4be54, type: 3}
   finalRoom: {fileID: 0}
   safeRoom: {fileID: 0}
   upRoom: {fileID: 0}
