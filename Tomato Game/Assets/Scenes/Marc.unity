@@ -1051,6 +1051,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoomManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4220718333158126399, guid: f00e5e119f7689947a7de8bb710e3727, type: 3}
+      propertyPath: m_TagString
+      value: GameController
+      objectReference: {fileID: 0}
     - target: {fileID: 7043257115552148868, guid: f00e5e119f7689947a7de8bb710e3727, type: 3}
       propertyPath: initialRoom
       value: 
@@ -1255,6 +1259,7 @@ MonoBehaviour:
   followObject: {fileID: 1645754279}
   finalRoom: {fileID: 0}
   Player: {fileID: 0}
+  finalWall: {fileID: 0}
   followTransform: {fileID: 0}
 --- !u!1 &1635257279
 GameObject:
