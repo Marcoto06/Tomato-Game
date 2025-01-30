@@ -284,7 +284,6 @@ MonoBehaviour:
   jumpForce: 7
   fallMultiplaier: 3
   jumpMultiplaier: 2
-  tr: {fileID: 510439615585312659}
   groundCheck: {fileID: 6653182101081002809}
   whatIsGround:
     serializedVersion: 2
@@ -306,9 +305,12 @@ MonoBehaviour:
     m_Bits: 64
   PJ_DAM: 50
   MAX_HP: 6
-  Current_HP: 0
-  knockBack: 0
+  Current_HP: 6
+  knockBack: 5
   current_class: 
+  C_atk: melee
+  hit: 0
+  knockBackRotate: 0
 --- !u!61 &6246767964494187041
 BoxCollider2D:
   m_ObjectHideFlags: 0

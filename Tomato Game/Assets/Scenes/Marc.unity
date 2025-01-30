@@ -275,6 +275,10 @@ PrefabInstance:
       value: 8.5
       objectReference: {fileID: 0}
     - target: {fileID: 6729223403926952122, guid: d3a86076c8c2085479076bfc0ffd8cb9, type: 3}
+      propertyPath: knockBack
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729223403926952122, guid: d3a86076c8c2085479076bfc0ffd8cb9, type: 3}
       propertyPath: current_class
       value: mage
       objectReference: {fileID: 0}
@@ -440,7 +444,7 @@ GameObject:
   - component: {fileID: 532348696}
   m_Layer: 0
   m_Name: RunManager
-  m_TagString: Untagged
+  m_TagString: manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -461,10 +465,14 @@ MonoBehaviour:
   pauseMenu: {fileID: 1445383522}
   manager: {fileID: 2141519764}
   eventSystem: {fileID: 144807531}
-  resumeButton: {fileID: 0}
+  resumeButton: {fileID: 1635257279}
+  fons:
+  - {fileID: 21300000, guid: 9172a13c82ed65f45bde0eae6a571afa, type: 3}
+  - {fileID: 21300000, guid: ac81c86110b684d4fa71da499372f145, type: 3}
   ranged_lvl: 0
   melee_lvl: 0
   mage_lvl: 0
+  ultimFons: 0
 --- !u!4 &532348697
 Transform:
   m_ObjectHideFlags: 0
@@ -641,11 +649,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6758422171175995664, guid: a610f30e5f4ce6542954c610da77481d, type: 3}
       propertyPath: EN_type
-      value: pinya
+      value: llimona
       objectReference: {fileID: 0}
     - target: {fileID: 6758422171175995664, guid: a610f30e5f4ce6542954c610da77481d, type: 3}
       propertyPath: players.m_Bits
       value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 6860342725227483640, guid: a610f30e5f4ce6542954c610da77481d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7172377620316877809, guid: a610f30e5f4ce6542954c610da77481d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1144,6 +1156,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followObject: {fileID: 1645754279}
+  finalRoom: {fileID: 0}
+  Player: {fileID: 0}
   followTransform: {fileID: 0}
 --- !u!1 &1635257279
 GameObject:

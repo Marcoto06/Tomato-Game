@@ -12,6 +12,7 @@ TagManager:
   - RUN
   - patrolSpawn
   - rang
+  - manager
   layers:
   - Default
   - TransparentFX

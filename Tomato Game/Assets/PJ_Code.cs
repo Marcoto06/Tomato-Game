@@ -52,6 +52,8 @@ public class movment : MonoBehaviour
     public int knockBack;
     public string current_class;
     public string C_atk = "melee";
+    public bool hit;
+    public int knockBackRotate;
 
     void Start()
     {
@@ -145,6 +147,10 @@ public class movment : MonoBehaviour
                 anim.SetBool("isRanged", false);
             }
         }
+        if (hit == true)
+        {
+            StartCoroutine(Hit());
+        }
     }
 
     private void FixedUpdate()
@@ -153,10 +159,12 @@ public class movment : MonoBehaviour
         {
             return;
         }
-
-        rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
-        anim.SetFloat("xVelocity", Math.Abs(rb.velocity.x));
-        anim.SetFloat("yVelocity", rb.velocity.y);
+        if (hit == false)
+        {
+            rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
+            anim.SetFloat("xVelocity", Math.Abs(rb.velocity.x));
+            anim.SetFloat("yVelocity", rb.velocity.y);
+        }
     }
 
     private void Flip()
@@ -257,5 +265,12 @@ public class movment : MonoBehaviour
                 brancaNTomato.SetActive(true);
             }
         }
+    }
+
+    public IEnumerator Hit()
+    {
+        rb.velocity = new Vector2(knockBack * knockBackRotate, rb.velocity.y);
+        yield return new WaitForSeconds(0.05f);
+        hit = false;
     }
 }
