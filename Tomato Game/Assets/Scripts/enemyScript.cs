@@ -189,7 +189,6 @@ public class enemyScript : MonoBehaviour
             }
             else
             {
-                Debug.Log("a");
                 myRb.velocity = new Vector2(0, 0);
                 StartCoroutine(AttackLlimona());
             }
@@ -243,8 +242,12 @@ public class enemyScript : MonoBehaviour
     public IEnumerator AttackLlimona()
     {
         anim.SetBool("L_isAttacking", true);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.8f);
+        myRb.constraints = RigidbodyConstraints2D.FreezePosition;
+        yield return new WaitForSeconds(0.8f);
         anim.SetBool("L_isAttacking", false);
+        myRb.constraints = RigidbodyConstraints2D.None;
+        myRb.constraints = RigidbodyConstraints2D.FreezeRotation;
         attacking = false;
     }
     public IEnumerator ChargePinya()
@@ -271,6 +274,8 @@ public class enemyScript : MonoBehaviour
         {
             Debug.Log("Hit player");
             playerGameobject.GetComponent<movment>().Current_HP -= 1;
+            playerGameobject.GetComponent<movment>().knockBackRotate = rotateValue;
+            playerGameobject.GetComponent<movment>().hit = true;
         }
     }
 }
