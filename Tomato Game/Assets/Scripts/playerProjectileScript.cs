@@ -28,6 +28,7 @@ public class playerProjectileScript : MonoBehaviour
         if (collision.CompareTag("enemy"))
         {
             collision.GetComponentInParent<enemyScript>().EN_CHP -= player.GetComponent<movment>().PJ_DAM;
+            collision.GetComponentInParent<enemyScript>().hit = true;
             Destroy(gameObject);
         }
         else if (collision.CompareTag("ground"))

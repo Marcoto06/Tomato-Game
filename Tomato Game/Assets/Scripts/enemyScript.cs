@@ -37,7 +37,7 @@ public class enemyScript : MonoBehaviour
     public GameObject attackPoint;
     public float radius;
     public bool hit;
-    public int knockBackRotate;
+    public float knockBackRotate;
     public int knockBack;
     Vector3 m_YAxis;
     // Start is called before the first frame update
@@ -88,10 +88,6 @@ public class enemyScript : MonoBehaviour
     {
         myRb.rotation = 0f;
 
-        if (EN_CHP<=0)
-        {
-            anim.SetBool("isDead", true);
-        }
         if(hit == true)
         {
             StartCoroutine(Hit());
@@ -239,6 +235,10 @@ public class enemyScript : MonoBehaviour
                 rotateValue *= -1;
             }
         }
+        if (collision.collider.CompareTag("enemy") | collision.collider.CompareTag("wall"))
+        {
+            rotateValue *= -1;
+        }
     }
 
     
@@ -290,10 +290,21 @@ public class enemyScript : MonoBehaviour
 
     public IEnumerator Hit()
     {
+        if (EN_CHP <= 0)
+        {
+            StartCoroutine(Die());
+        }
         anim.SetBool("isHit", true);
         myRb.velocity = new Vector2(knockBack * knockBackRotate, myRb.velocity.y);
         yield return new WaitForSeconds(0.05f);
         hit = false;
         anim.SetBool("isHit", false);
+    }
+
+    public IEnumerator Die()
+    {
+        anim.SetBool("isDead", true);
+        yield return new WaitForSeconds(0.4333333342f);
+        Destroy(gameObject);
     }
 }
