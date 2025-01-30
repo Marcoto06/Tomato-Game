@@ -40,6 +40,7 @@ public class BOSS_Script : MonoBehaviour
     public float knockBackRotate;
     public int knockBack;
     public bool isBoss;
+    public bool grounded;
     Vector3 m_YAxis;
     // Start is called before the first frame update
     void Start()
@@ -54,7 +55,7 @@ public class BOSS_Script : MonoBehaviour
         rotateValue = 1;
         EN_MHP = 500;
         moveSpeed = 3.5f;
-        gameObject.transform.localScale = new Vector3(0.15f * -rotateValue, 0.15f, 0);
+        gameObject.transform.localScale = new Vector3(0.12f * -rotateValue, 0.12f, 0);
         EN_CHP = EN_MHP;
     }
 
@@ -62,14 +63,17 @@ public class BOSS_Script : MonoBehaviour
     void Update()
     {
         myRb.rotation = 0f;
-
+        gameObject.transform.localScale = new Vector3(0.12f * -rotateValue, 0.12f, 0);
         if (hit == true)
         {
             StartCoroutine(Hit());
         }
-
-        Vector3 scale = gameObject.transform.localScale;
-        StartCoroutine(ChargePinya());
+        if(grounded == true)
+        {
+            //myRb.velocity = new Vector2(moveSpeed * rotateValue * chargeForce, myRb.velocity.y);
+            Vector3 scale = gameObject.transform.localScale;
+            StartCoroutine(ChargePinya());
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -82,18 +86,20 @@ public class BOSS_Script : MonoBehaviour
         {
             StartCoroutine(PlayerHit());
         }
+        else if (collision.collider.CompareTag("ground"))
+        {
+            grounded = true;
+        }
     }
 
     public IEnumerator ChargePinya()
     {
-        anim.SetBool("P_isCharging", true);
         myRb.constraints = RigidbodyConstraints2D.FreezePosition;
         yield return new WaitForSeconds(2);
-        anim.SetBool("P_isCharging", false);
         anim.SetBool("P_isAttacking", true);
         myRb.constraints = RigidbodyConstraints2D.None;
         myRb.constraints = RigidbodyConstraints2D.FreezeRotation;
-        myRb.velocity = new Vector2(moveSpeed * rotateValue * chargeForce, myRb.velocity.y);
+        myRb.velocity = new Vector2(moveSpeed * -rotateValue * chargeForce, myRb.velocity.y);
         yield return new WaitForSeconds(1f);
         anim.SetBool("P_isAttacking", false);
         player_in_range = false;

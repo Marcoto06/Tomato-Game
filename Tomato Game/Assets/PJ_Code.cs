@@ -44,6 +44,7 @@ public class movment : MonoBehaviour
     public GameObject brancaNTomato;
     public GameObject dard;
     public GameObject N_dard;
+    public GameObject gameOver;
     public float radius;
     public LayerMask enemies;
     public float PJ_DAM;
@@ -58,6 +59,8 @@ public class movment : MonoBehaviour
 
     void Start()
     {
+        gameOver = GameObject.FindGameObjectWithTag("gameOver");
+        gameOver.SetActive(false);
         manager = GameObject.FindGameObjectWithTag("manager");
         Time.timeScale = 1;
         vecGravity = new Vector2(0, -Physics2D.gravity.y);
@@ -249,6 +252,9 @@ public class movment : MonoBehaviour
             enemyGameobject.GetComponentInParent<enemyScript>().EN_CHP -= PJ_DAM;
             enemyGameobject.GetComponentInParent<enemyScript>().hit = true;
             enemyGameobject.GetComponentInParent<enemyScript>().knockBackRotate = gameObject.transform.localScale.x;
+            enemyGameobject.GetComponentInParent<BOSS_Script>().EN_CHP -= PJ_DAM;
+            enemyGameobject.GetComponentInParent<BOSS_Script>().hit = true;
+            enemyGameobject.GetComponentInParent<BOSS_Script>().knockBackRotate = gameObject.transform.localScale.x;
         }
     }
 
@@ -262,7 +268,7 @@ public class movment : MonoBehaviour
         if (collision.collider.CompareTag("enemy"))
         {
             Current_HP -= 1;
-            rb.velocity = new Vector2(-knockBack, rb.velocity.y);
+            hit = true;
         }
     }
     public void shoot()
@@ -301,7 +307,8 @@ public class movment : MonoBehaviour
     public IEnumerator Die()
     {
         anim.SetBool("isDead", true);
-        yield return new WaitForSeconds(0.4333333342f);
-        Destroy(gameObject);
+        gameOver.SetActive(true);
+        yield return new WaitForSeconds(5f);
+        Application.Quit();
     }
 }
