@@ -44,7 +44,6 @@ public class movment : MonoBehaviour
     public GameObject brancaNTomato;
     public GameObject dard;
     public GameObject N_dard;
-    public GameObject GameOver;
     public float radius;
     public LayerMask enemies;
     public float PJ_DAM;
@@ -59,9 +58,7 @@ public class movment : MonoBehaviour
 
     void Start()
     {
-        GameOver = GameObject.FindGameObjectWithTag("gameOver");
-        GameOver.SetActive(false);
-        manager = GameObject.FindGameObjectWithTag("GameController");
+        manager = GameObject.FindGameObjectWithTag("manager");
         Time.timeScale = 1;
         vecGravity = new Vector2(0, -Physics2D.gravity.y);
         rb = GetComponent<Rigidbody2D>();
@@ -168,6 +165,8 @@ public class movment : MonoBehaviour
         {
             StartCoroutine(Die());
         }
+
+
     }
 
     private void FixedUpdate()
@@ -201,6 +200,17 @@ public class movment : MonoBehaviour
         {
             isGrounded = true;
             anim.SetBool("isJumping", !isGrounded);
+        }
+        if (collision.CompareTag("powerUp_H"))
+        {
+            MAX_HP++;  
+            Current_HP = MAX_HP;  
+            Destroy(collision.gameObject); 
+        }
+        if (collision.CompareTag("powerUp_D"))
+        {
+            PJ_DAM = PJ_DAM + 25;
+            Destroy(collision.gameObject);
         }
     }
 
@@ -298,9 +308,6 @@ public class movment : MonoBehaviour
     {
         anim.SetBool("isDead", true);
         yield return new WaitForSeconds(0.4333333342f);
-        GameOver.SetActive(true);
-        Time.timeScale = 0;
-        yield return new WaitForSeconds(5);
-        Application.Quit();
+        Destroy(gameObject);
     }
 }
