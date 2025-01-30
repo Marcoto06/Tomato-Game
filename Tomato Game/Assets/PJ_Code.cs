@@ -227,6 +227,7 @@ public class movment : MonoBehaviour
             Debug.Log("Hit enemy");
             enemyGameobject.GetComponentInParent<enemyScript>().EN_CHP -= PJ_DAM;
             enemyGameobject.GetComponentInParent<enemyScript>().hit = true;
+            enemyGameobject.GetComponentInParent<enemyScript>().knockBackRotate = gameObject.transform.localScale.x;
         }
     }
 
