@@ -83,6 +83,8 @@ public class enemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        myRb.rotation = 0f;
+
         if (EN_CHP<=0)
         {
             anim.SetBool("isDead", true);
@@ -251,7 +253,7 @@ public class enemyScript : MonoBehaviour
         Destroy(PatrolPoints[1]);
         anim.SetBool("P_isCharging", true);
         myRb.constraints = RigidbodyConstraints2D.FreezePosition;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         anim.SetBool("P_isCharging", false);
         anim.SetBool("P_isAttacking", true);
         myRb.constraints = RigidbodyConstraints2D.None;
