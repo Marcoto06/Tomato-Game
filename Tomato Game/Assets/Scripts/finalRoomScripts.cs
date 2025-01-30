@@ -11,7 +11,7 @@ public class finalRoomScripts : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        manager = GameObject.FindGameObjectWithTag("manager");
+        manager = GameObject.FindGameObjectWithTag("GameController");
         if (manager.GetComponent<roomManager>().floor == 2)
         {
             OpenDoor();

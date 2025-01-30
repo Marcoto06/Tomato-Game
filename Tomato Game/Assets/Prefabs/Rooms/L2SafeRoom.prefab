@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1697264568134654418}
   - component: {fileID: 781835877116925943}
+  - component: {fileID: 7338506682846293635}
   m_Layer: 0
   m_Name: L2SafeRoom
   m_TagString: safeRoom
@@ -27,9 +28,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 20.8, y: 10, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 5672748419098599376}
   - {fileID: 5248739569766213718}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -74,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 23667f09013e594468f3c398b61710d8, type: 3}
-  m_Color: {r: 0, g: 0.8155856, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 9eaccdefa103c1f4a963312840b089cc, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -85,6 +87,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7338506682846293635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3386634467186265017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c21541fd7648981429b13c2e255265ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 0}
+  mySprite: {fileID: 0}
+--- !u!1 &6023705285721765069
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5672748419098599376}
+  m_Layer: 0
+  m_Name: Escenari
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5672748419098599376
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6023705285721765069}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.5241105, y: 0.43992275, z: 0.019101214}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1697264568134654418}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8712651347026351035
 GameObject:
   m_ObjectHideFlags: 0
@@ -111,7 +158,7 @@ Transform:
   m_GameObject: {fileID: 8712651347026351035}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalPosition: {x: 19.2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -131,8 +178,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manager: {fileID: 4220718333158126399, guid: f00e5e119f7689947a7de8bb710e3727, type: 3}
   Rooms:
-  - {fileID: 5748142927834897940, guid: 6a65fcb961d6830448ec4a0319255a37, type: 3}
-  finalRoom: {fileID: 3386634467186265017, guid: 626c59058b1137048b7102d16380a04b, type: 3}
+  - {fileID: 5748142927834897940, guid: 29cdb9621bb4a304d9c60a6921eb63b5, type: 3}
+  - {fileID: 5748142927834897940, guid: e1a287b1b42c11d4faf3ab5d40280780, type: 3}
+  - {fileID: 5748142927834897940, guid: fc14269968977144a8600bb726df995e, type: 3}
+  - {fileID: 5748142927834897940, guid: 008077803bd11f448a73b13476de6eda, type: 3}
+  finalRoom: {fileID: 3386634467186265017, guid: 34c1df01a6eb4db418aee7c8cee32d02, type: 3}
   safeRoom: {fileID: 3386634467186265017}
-  upRoom: {fileID: 3386634467186265017, guid: 60ad5f62c60e4c5429ba55d5ee4ee971, type: 3}
-  floor: 0
+  upRoom: {fileID: 3386634467186265017, guid: 22e79a6b194e83646adcbc96441264c5, type: 3}

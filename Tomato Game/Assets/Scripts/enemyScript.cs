@@ -39,6 +39,7 @@ public class enemyScript : MonoBehaviour
     public bool hit;
     public float knockBackRotate;
     public int knockBack;
+    public bool isBoss;
     Vector3 m_YAxis;
     // Start is called before the first frame update
     void Start()
@@ -82,6 +83,13 @@ public class enemyScript : MonoBehaviour
             llimonaPatrolCreate();
             mySprite.sprite = enemySprites[2];
             anim.SetBool("isLlimona", true);
+        }
+        if (isBoss == true)
+        {
+            EN_MHP = 500;
+            moveSpeed = 3.5f;
+            gameObject.transform.localScale = new Vector3(0.2f * -rotateValue, 0.2f, 0);
+            anim.SetBool("isBoss", true);
         }
 
         EN_CHP = EN_MHP;
@@ -184,7 +192,11 @@ public class enemyScript : MonoBehaviour
             myHitbox[0].SetActive(false);
             myHitbox[1].SetActive(false);
             myHitbox[2].SetActive(true);
-            gameObject.transform.localScale = new Vector3(0.15f * -rotateValue, 0.15f, 0);
+            if (isBoss != true)
+            {
+                gameObject.transform.localScale = new Vector3(0.15f * -rotateValue, 0.15f, 0);
+            }
+            else { gameObject.transform.localScale = new Vector3(0.2f * -rotateValue, 0.2f, 0); }
             anim.SetFloat("L_Walk_velocity", Math.Abs(myRb.velocity.x));
             //Atacar en proximitat del player
             if (attacking == false)
@@ -239,7 +251,7 @@ public class enemyScript : MonoBehaviour
                 rotateValue *= -1;
             }
         }
-        if (collision.collider.CompareTag("enemy") | collision.collider.CompareTag("wall"))
+        if (collision.collider.CompareTag("enemy") | collision.collider.CompareTag("wall") | collision.collider.CompareTag("door") | collision.collider.CompareTag("finalWall"))
         {
             rotateValue *= -1;
         }
@@ -308,6 +320,10 @@ public class enemyScript : MonoBehaviour
     public IEnumerator Die()
     {
         anim.SetBool("isDead", true);
+        if(isBoss == true)
+        {
+            gameObject.GetComponentInParent<finalRoomScripts>().OpenDoor();
+        }
         yield return new WaitForSeconds(0.4333333342f);
         Destroy(gameObject);
     }

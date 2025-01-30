@@ -9,26 +9,33 @@ public class cameraManager : MonoBehaviour
     public GameObject Player;
     public GameObject finalWall;
     public Transform followTransform;
+    public bool final;
     // Start is called before the first frame update
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-        followObject = Player;
+        if (final != true)
+        {
+            followObject = Player;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (finalRoom == null)
+        if (final != true)
         {
-            finalRoom = GameObject.FindGameObjectWithTag("finalRoom");
-            finalWall = GameObject.FindGameObjectWithTag("finalWall");
-            finalWall.SetActive(false);
-        }
-        if (Player.transform.position.x > finalRoom.transform.position.x)
-        {
-            followObject = finalRoom;
-            finalWall.SetActive(true);
+            if (finalRoom == null)
+            {
+                finalRoom = GameObject.FindGameObjectWithTag("finalRoom");
+                finalWall = GameObject.FindGameObjectWithTag("finalWall");
+                finalWall.SetActive(false);
+            }
+            if (Player.transform.position.x > finalRoom.transform.position.x)
+            {
+                followObject = finalRoom;
+                finalWall.SetActive(true);
+            }
         }
         followTransform = followObject.GetComponent<Transform>();
         if (followTransform.position.x < 0)

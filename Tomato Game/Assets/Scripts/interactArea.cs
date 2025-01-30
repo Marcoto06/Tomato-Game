@@ -1,5 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -22,7 +25,7 @@ public class interactArea : MonoBehaviour
         if (gameObject.CompareTag("door") && collision.CompareTag("Player"))
         {
             if (Input.GetButtonDown("Jump"))
-            {  
+            {
                 Debug.Log("jajajsajdj");
                 if (manager.GetComponent<roomManager>().floor == 0)
                 {

@@ -72,14 +72,8 @@ public class movment : MonoBehaviour
             string json = System.IO.File.ReadAllText(path);
             saveData loadedData = JsonUtility.FromJson<saveData>(json);
             current_class = loadedData.player_class;
-            if (manager.GetComponent<roomManager>().floor == 0)
-            {
-                Current_HP = 6;
-            } else
-            {
-                Current_HP = loadedData.current_HP;
-            }
         }
+        Current_HP = MAX_HP;
         if (current_class == "melee")
         {
             anim.SetBool("isMelee", true);

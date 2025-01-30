@@ -425,7 +425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manager: {fileID: 4220718333158126399, guid: f00e5e119f7689947a7de8bb710e3727, type: 3}
   Rooms:
-  - {fileID: 5748142927834897940, guid: 2c63d863c22f29f4191b380b83a6c9a3, type: 3}
+  - {fileID: 5748142927834897940, guid: 29cdb9621bb4a304d9c60a6921eb63b5, type: 3}
   finalRoom: {fileID: 0}
   safeRoom: {fileID: 0}
   upRoom: {fileID: 0}
