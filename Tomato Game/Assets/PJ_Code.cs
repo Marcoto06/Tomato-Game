@@ -14,7 +14,7 @@ public class movment : MonoBehaviour
     [SerializeField] public float fallMultiplaier;
     [SerializeField] public float jumpMultiplaier;
 
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
 
     public Transform groundCheck;
 
