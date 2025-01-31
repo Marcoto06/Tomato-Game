@@ -340,10 +340,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1645754291}
     - target: {fileID: 6729223403926952122, guid: d3a86076c8c2085479076bfc0ffd8cb9, type: 3}
-      propertyPath: tr
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6729223403926952122, guid: d3a86076c8c2085479076bfc0ffd8cb9, type: 3}
       propertyPath: anim
       value: 
       objectReference: {fileID: 1645754281}
@@ -351,14 +347,6 @@ PrefabInstance:
       propertyPath: N_dard
       value: 
       objectReference: {fileID: 8916517526082023811, guid: fbcc04e260234db4596c25cd837b75e6, type: 3}
-    - target: {fileID: 6729223403926952122, guid: d3a86076c8c2085479076bfc0ffd8cb9, type: 3}
-      propertyPath: PJ_DAM
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 6729223403926952122, guid: d3a86076c8c2085479076bfc0ffd8cb9, type: 3}
-      propertyPath: manager
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 6729223403926952122, guid: d3a86076c8c2085479076bfc0ffd8cb9, type: 3}
       propertyPath: jumpForce
       value: 9
@@ -371,20 +359,11 @@ PrefabInstance:
       propertyPath: current_class
       value: mage
       objectReference: {fileID: 0}
-    - target: {fileID: 6729223403926952122, guid: d3a86076c8c2085479076bfc0ffd8cb9, type: 3}
-      propertyPath: enemies.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
-    - target: {fileID: 7483720229181925100, guid: d3a86076c8c2085479076bfc0ffd8cb9, type: 3}
-      propertyPath: m_GravityScale
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8155331214588684256, guid: d3a86076c8c2085479076bfc0ffd8cb9, type: 3}
       propertyPath: m_Name
       value: PJ
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 510439615585312659, guid: d3a86076c8c2085479076bfc0ffd8cb9, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

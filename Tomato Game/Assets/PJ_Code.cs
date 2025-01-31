@@ -3,7 +3,10 @@ using System.Collections;
 using System.IO;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 using UnityEngine;
+using JetBrains.Annotations;
+using UnityEngine.UI;
 
 public class movment : MonoBehaviour
 {
@@ -45,6 +48,11 @@ public class movment : MonoBehaviour
     public GameObject dard;
     public GameObject N_dard;
     public GameObject gameOver;
+    public GameObject mageUI;
+    public Image MagCurrent;
+    public Image MagAlt;
+    public Sprite bastoMagSprite;
+    public Sprite orbeMagSprite;
     public float radius;
     public LayerMask enemies;
     public float PJ_DAM;
@@ -56,9 +64,12 @@ public class movment : MonoBehaviour
     public string C_atk = "melee";
     public bool hit;
     public int knockBackRotate;
+    public bool isDamaged;
 
     void Start()
     {
+        mageUI.SetActive(false);
+        isDamaged = false;
         gameOver = GameObject.FindGameObjectWithTag("gameOver");
         gameOver.SetActive(false);
         manager = GameObject.FindGameObjectWithTag("manager");
@@ -88,15 +99,27 @@ public class movment : MonoBehaviour
         }
         else if (current_class == "mage")
         {
+            mageUI.SetActive(true);
             anim.SetBool("IsMage", true);
             anim.SetBool("isDistance", false);
             anim.SetBool("isMelee", false);
             C_atk = "melee";
         }
+        PJ_DAM = 50; //linia temporal. treure mes tard
     }
 
     void Update()
     {
+        if (C_atk == "melee")
+        {
+            MagCurrent.sprite = bastoMagSprite;
+            MagAlt.sprite = orbeMagSprite;
+        }
+        else
+        {
+            MagCurrent.sprite = orbeMagSprite;
+            MagAlt.sprite = bastoMagSprite;
+        }
         if (isDashing)
         {
             anim.SetBool("isDashing", canDash);
@@ -154,7 +177,7 @@ public class movment : MonoBehaviour
                 anim.SetBool("isRanged", false);
             }
         }
-        if (hit == true)
+        if (hit == true && isDamaged == false)
         {
             StartCoroutine(Hit());
         }
@@ -267,7 +290,6 @@ public class movment : MonoBehaviour
     {
         if (collision.collider.CompareTag("enemy"))
         {
-            Current_HP -= 1;
             hit = true;
         }
     }
@@ -298,17 +320,21 @@ public class movment : MonoBehaviour
     }
     public IEnumerator Hit()
     {
+        isDamaged = true;
+        Current_HP--;
         anim.SetBool("isHit", true);
         rb.velocity = new Vector2(knockBack * knockBackRotate, rb.velocity.y);
         yield return new WaitForSeconds(0.05f);
         hit = false;
         anim.SetBool("isHit", false);
+        isDamaged = false;
     }
     public IEnumerator Die()
     {
         anim.SetBool("isDead", true);
         gameOver.SetActive(true);
-        yield return new WaitForSeconds(5f);
-        Application.Quit();
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(5);
+        SceneManager.LoadScene("Menu");
     }
 }
