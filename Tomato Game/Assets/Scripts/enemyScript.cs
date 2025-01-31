@@ -298,7 +298,6 @@ public class enemyScript : MonoBehaviour
         foreach (Collider2D playerGameobject in playerCol)
         {
             Debug.Log("Hit player");
-            playerGameobject.GetComponent<movment>().Current_HP -= 1;
             playerGameobject.GetComponent<movment>().knockBackRotate = rotateValue;
             playerGameobject.GetComponent<movment>().hit = true;
         }
