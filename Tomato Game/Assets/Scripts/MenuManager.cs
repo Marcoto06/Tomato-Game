@@ -54,6 +54,7 @@ public class Scene : MonoBehaviour
         saveData data = new saveData();
         data.player_class = selectClass;
         data.floor = 0;
+        data.current_HP = 6;
         startButton.GetComponent<Button>().interactable = true;
         string json = JsonUtility.ToJson(data);
         string path = Application.persistentDataPath + "/saveData.json";

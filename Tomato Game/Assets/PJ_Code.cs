@@ -66,6 +66,8 @@ public class movment : MonoBehaviour
     public int knockBackRotate;
     public bool isDamaged;
 
+    public GameObject[] hearts;
+
     void Start()
     {
         mageUI.SetActive(false);
@@ -83,8 +85,8 @@ public class movment : MonoBehaviour
             string json = System.IO.File.ReadAllText(path);
             saveData loadedData = JsonUtility.FromJson<saveData>(json);
             current_class = loadedData.player_class;
+            Current_HP = loadedData.current_HP;
         }
-        Current_HP = MAX_HP;
         if (current_class == "melee")
         {
             anim.SetBool("isMelee", true);
@@ -110,6 +112,13 @@ public class movment : MonoBehaviour
 
     void Update()
     {
+        for (int i = 0; i < hearts.Length; i++) 
+        { 
+            if (i < Current_HP)
+            {
+                hearts[i].SetActive(true);
+            } else { hearts[i].SetActive(false); }
+        }
         if (C_atk == "melee")
         {
             MagCurrent.sprite = bastoMagSprite;
