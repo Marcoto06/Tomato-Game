@@ -164,7 +164,7 @@ public class movment : MonoBehaviour
                 StartCoroutine(AttAn());
             }
         }
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown("L1"))
         {
             if (C_atk == "melee")
             {
