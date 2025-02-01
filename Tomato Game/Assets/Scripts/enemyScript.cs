@@ -310,6 +310,11 @@ public class enemyScript : MonoBehaviour
             StartCoroutine(Die());
         }
         anim.SetBool("isHit", true);
+        if (player.transform.position.x < transform.position.x)
+        {
+            knockBackRotate = 1;
+        }
+        else { knockBackRotate = -1; }
         myRb.velocity = new Vector2(knockBack * knockBackRotate, myRb.velocity.y);
         yield return new WaitForSeconds(0.05f);
         hit = false;

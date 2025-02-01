@@ -18,7 +18,10 @@ TagManager:
   - bossManager
   - door
   - gameOver
+  - powerUp_H
+  - powerUp_D
   - powerUp
+  - heart
   layers:
   - Default
   - TransparentFX

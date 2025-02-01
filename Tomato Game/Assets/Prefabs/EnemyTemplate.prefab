@@ -517,6 +517,10 @@ MonoBehaviour:
     m_Bits: 128
   attackPoint: {fileID: 7516924639824190720}
   radius: 3
+  hit: 0
+  knockBackRotate: 0
+  knockBack: 10
+  isBoss: 0
 --- !u!50 &6546462876030207680
 Rigidbody2D:
   serializedVersion: 4
