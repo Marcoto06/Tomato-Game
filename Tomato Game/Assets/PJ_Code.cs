@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 public class movment : MonoBehaviour
 {
-    public float moveSpeed;
+    public float maxSpeed;
     [Header("Jump System")]
     [SerializeField] public float jumpTime;
     [SerializeField] public float jumpForce;
@@ -34,6 +34,7 @@ public class movment : MonoBehaviour
     private bool canDash = true;
     private bool isDashing;
     public float dashForce;
+    public float dashEnd;
     public float dashingTime;
     public float dashingCooldown;
     public bool isAttacking;
@@ -65,6 +66,8 @@ public class movment : MonoBehaviour
     public bool hit;
     public int knockBackRotate;
     public bool isDamaged;
+    public float runAccelAmount;
+    public float runDeccelAmount;
 
     public GameObject[] hearts;
 
@@ -206,7 +209,8 @@ public class movment : MonoBehaviour
         }
         if (hit == false)
         {
-            rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
+            Run(1);
+            //rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
             anim.SetFloat("xVelocity", Math.Abs(rb.velocity.x));
             anim.SetFloat("yVelocity", rb.velocity.y);
         }
@@ -253,6 +257,7 @@ public class movment : MonoBehaviour
         yield return new WaitForSeconds(dashingTime);
         rb.gravityScale = originalGravity;
         isDashing = false;
+        rb.velocity = new Vector2(transform.localScale.x * dashEnd, rb.velocity.y);
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
     }
@@ -345,5 +350,34 @@ public class movment : MonoBehaviour
         Time.timeScale = 0;
         yield return new WaitForSecondsRealtime(5);
         SceneManager.LoadScene("Menu");
+    }
+
+    private void Run(float lerp)
+    {
+        float targetSpeed = horizontal * maxSpeed;
+        targetSpeed = Mathf.Lerp(rb.velocity.x, targetSpeed, lerp);
+
+        float accelRate;
+
+        //Gets an acceleration value based on if we are accelerating (includes turning) 
+        //or trying to decelerate (stop). As well as applying a multiplier if we're air borne.
+        //if (LastOnGroundTime > 0)
+            accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? runAccelAmount : runDeccelAmount;
+        //else
+        //    accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? Data.runAccelAmount * Data.accelInAir : Data.runDeccelAmount * Data.deccelInAir;
+        if (Mathf.Abs(rb.velocity.x) > Mathf.Abs(targetSpeed) && Mathf.Sign(rb.velocity.x) == Mathf.Sign(targetSpeed) && Mathf.Abs(targetSpeed) > 0.01f && isGrounded == true)
+		{
+            //Prevent any deceleration from happening, or in other words conserve are current momentum
+            //You could experiment with allowing for the player to slightly increae their speed whilst in this "state"
+            accelRate = 0;
+        }
+        float speedDif = targetSpeed - rb.velocity.x;
+        //Calculate force along x-axis to apply to thr player
+
+        float movement = speedDif * accelRate;
+
+        //Convert this to a vector and apply to rigidbody
+        rb.AddForce(movement * Vector2.right, ForceMode2D.Force);
+
     }
 }
