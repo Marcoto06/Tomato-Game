@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1606242327094128631}
   - component: {fileID: 8855644502837472312}
   - component: {fileID: 1179319474976624398}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: patrolLimit
   m_TagString: RUN
   m_Icon: {fileID: 0}

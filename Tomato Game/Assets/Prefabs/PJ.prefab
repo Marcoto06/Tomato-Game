@@ -560,7 +560,7 @@ MonoBehaviour:
     m_Bits: 8
   - serializedVersion: 2
     m_Bits: 264
-  dashForce: 100
+  dashForce: 150
   dashEnd: 50
   dashingTime: 0.3
   dashingCooldown: 2
