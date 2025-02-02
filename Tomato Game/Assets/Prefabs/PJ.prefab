@@ -548,7 +548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2a98f3117c56964aba278e9c64bead3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  maxSpeed: 7
   jumpTime: 0.4
   jumpForce: 9
   fallMultiplaier: 3
@@ -561,6 +561,7 @@ MonoBehaviour:
   - serializedVersion: 2
     m_Bits: 264
   dashForce: 100
+  dashEnd: 50
   dashingTime: 0.3
   dashingCooldown: 2
   isAttacking: 0
@@ -585,12 +586,14 @@ MonoBehaviour:
   PJ_DAM: 50
   MAX_HP: 6
   Current_HP: 6
-  knockBack: 50
+  knockBack: 20
   current_class: mage
   C_atk: melee
   hit: 0
   knockBackRotate: 0
   isDamaged: 0
+  runAccelAmount: 10
+  runDeccelAmount: 5
   hearts:
   - {fileID: 5722821337842846982}
   - {fileID: 1480860019201626280}

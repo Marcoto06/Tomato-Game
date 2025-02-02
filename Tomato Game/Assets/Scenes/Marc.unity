@@ -540,6 +540,22 @@ PrefabInstance:
       propertyPath: m_TagString
       value: heart
       objectReference: {fileID: 0}
+    - target: {fileID: 6729223403926952122, guid: d3a86076c8c2085479076bfc0ffd8cb9, type: 3}
+      propertyPath: maxSpeed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729223403926952122, guid: d3a86076c8c2085479076bfc0ffd8cb9, type: 3}
+      propertyPath: targetSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729223403926952122, guid: d3a86076c8c2085479076bfc0ffd8cb9, type: 3}
+      propertyPath: runAccelAmount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729223403926952122, guid: d3a86076c8c2085479076bfc0ffd8cb9, type: 3}
+      propertyPath: runDeccelAmount
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8155331214588684256, guid: d3a86076c8c2085479076bfc0ffd8cb9, type: 3}
       propertyPath: m_Name
       value: PJ
